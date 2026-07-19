@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobPeak – Get Qualified for Remote AI Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --primary:#2563EB;--primary-dark:#1D4ED8;--primary-light:#EFF6FF;
+      --green:#16A34A;--purple:#7C3AED;--orange:#EA580C;
+      --dark:#111827;--medium:#374151;--light:#6B7280;
+      --border:#E5E7EB;--bg:#F9FAFB;
+    }
+    body{font-family:'Inter',-apple-system,sans-serif;color:var(--dark);line-height:1.6;}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .nav-logo{font-size:1.4rem;font-weight:800;color:var(--dark);text-decoration:none;}
+    .nav-logo span{color:var(--primary);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{text-decoration:none;color:var(--medium);font-weight:500;font-size:.95rem;transition:color .2s;}
+    .nav-links a:hover{color:var(--primary);}
+    .nav-actions{display:flex;align-items:center;gap:1rem;}
+    .btn-login{text-decoration:none;color:var(--medium);font-weight:500;font-size:.95rem;}
+    .btn-primary{background:var(--primary);color:white;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem;transition:background .2s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;}
+    .btn-primary:hover{background:var(--primary-dark);}
+    .btn-outline{background:white;color:var(--primary);border:1.5px solid var(--primary);padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s;cursor:pointer;display:inline-flex;align-items:center;}
+    .btn-outline:hover{background:var(--primary-light);}
+
+    /* HERO */
+    .hero-wrap{max-width:1200px;margin:0 auto;padding:80px 5% 60px;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    .hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:#EFF6FF;color:var(--primary);font-size:.8rem;font-weight:600;padding:.3rem .8rem;border-radius:100px;margin-bottom:1.2rem;}
+    .hero-wrap h1{font-size:3rem;font-weight:800;line-height:1.15;margin-bottom:1rem;}
+    .hero-wrap h1 span{color:var(--primary);}
+    .hero-sub{font-size:1.1rem;color:var(--medium);margin-bottom:1.5rem;}
+    .hero-bullets{list-style:none;margin-bottom:2rem;display:flex;flex-direction:column;gap:.5rem;}
+    .hero-bullets li{display:flex;align-items:center;gap:.6rem;font-size:.95rem;color:var(--medium);}
+    .hero-bullets li::before{content:"✓";width:20px;height:20px;background:#DCFCE7;color:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;}
+    .hero-ctas{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;}
+    .hero-ctas .btn-primary,.hero-ctas .btn-outline{padding:.8rem 1.6rem;font-size:1rem;}
+    .trust-badges{display:flex;gap:1.5rem;flex-wrap:wrap;}
+    .trust-badge{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--light);}
+    .trust-icon{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+    .trust-icon.g{background:#DCFCE7;}.trust-icon.b{background:#EFF6FF;}.trust-icon.s{background:var(--bg);}
+    .trust-badge strong{font-weight:600;color:var(--medium);display:block;}
+
+    /* LAPTOP MOCKUP */
+    .laptop-outer{position:relative;}
+    .laptop-frame{background:#1E293B;border-radius:16px 16px 0 0;padding:12px 12px 0;}
+    .laptop-notch{width:60px;height:6px;background:#334155;border-radius:3px;margin:0 auto 8px;}
+    .laptop-screen{background:#F8FAFC;border-radius:8px 8px 0 0;overflow:hidden;height:360px;display:flex;}
+    .laptop-base{height:18px;background:#2D3748;border-radius:0 0 4px 4px;}
+    .laptop-foot{width:40%;height:12px;background:#1A202C;margin:0 auto;border-radius:0 0 6px 6px;}
+    .db-sidebar{width:110px;background:#0F172A;padding:12px 8px;flex-shrink:0;}
+    .db-logo{color:white;font-size:.7rem;font-weight:800;padding:4px 8px;margin-bottom:12px;}
+    .db-nav{padding:6px 8px;border-radius:6px;font-size:.62rem;color:#94A3B8;margin-bottom:2px;cursor:pointer;}
+    .db-nav.active{background:#1E3A5F;color:white;}
+    .db-main{flex:1;padding:12px;overflow:hidden;}
+    .db-welcome{font-size:.72rem;font-weight:700;color:#111;margin-bottom:2px;}
+    .db-sub{font-size:.58rem;color:#6B7280;margin-bottom:10px;}
+    .db-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:10px;}
+    .db-stat{background:white;border:1px solid #E5E7EB;border-radius:7px;padding:7px;}
+    .db-stat-lbl{font-size:.52rem;color:#6B7280;margin-bottom:3px;}
+    .db-stat-val{font-size:.85rem;font-weight:800;color:#111;}
+    .db-stat-val.g{color:#16A34A;}
+    .db-stat-note{font-size:.48rem;color:#6B7280;margin-top:2px;}
+    .db-sec{font-size:.62rem;font-weight:600;color:#374151;margin-bottom:5px;}
+    .db-proj{display:flex;align-items:center;justify-content:space-between;padding:5px 7px;background:white;border:1px solid #E5E7EB;border-radius:5px;margin-bottom:3px;}
+    .db-proj-name{font-size:.58rem;font-weight:500;color:#111;}
+    .db-proj-rate{font-size:.6rem;font-weight:700;color:var(--primary);}
+    .dot{width:6px;height:6px;border-radius:50%;margin-right:5px;flex-shrink:0;}
+    .dot.b{background:#2563EB;}.dot.s{background:#16A34A;}.dot.p{background:#7C3AED;}.dot.c{background:#EA580C;}
+
+    /* SECTIONS */
+    section{padding:80px 5%;}
+    .inner{max-width:1200px;margin:0 auto;}
+    .lbl{text-align:center;font-size:.82rem;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.7rem;}
+    .h2{text-align:center;font-size:2rem;font-weight:800;margin-bottom:1rem;}
+    .h2 span{color:var(--primary);}
+    .sub{text-align:center;color:var(--light);font-size:.95rem;max-width:580px;margin:0 auto 3rem;}
+
+    /* HOW IT WORKS */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;}
+    .steps::before{content:'';position:absolute;top:27px;left:13%;right:13%;height:2px;background:repeating-linear-gradient(90deg,var(--border) 0,var(--border) 8px,transparent 8px,transparent 16px);}
+    .step{text-align:center;}
+    .step-num{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.1rem;position:relative;z-index:1;}
+    .step-num.s1{background:#EFF6FF;}.step-num.s2{background:#F0FDF4;}.step-num.s3{background:#F5F3FF;}.step-num.s4{background:#FFF7ED;}
+    .step-badge{position:absolute;top:-5px;right:-5px;width:18px;height:18px;border-radius:50%;color:white;font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+    .step h3{font-size:1rem;font-weight:700;margin-bottom:.35rem;}
+    .step p{font-size:.85rem;color:var(--light);}
+
+    /* TIERS */
+    .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:1.2rem;}
+    .tier-card{background:white;border:1.5px solid var(--border);border-radius:16px;padding:1.5rem;transition:transform .2s,box-shadow .2s;}
+    .tier-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08);}
+    .tier-hdr{display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;}
+    .tier-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+    .tier-icon.b{background:#EFF6FF;color:#2563EB;}.tier-icon.s{background:#F0FDF4;color:#16A34A;}.tier-icon.p{background:#F5F3FF;color:#7C3AED;}.tier-icon.c{background:#FFF7ED;color:#EA580C;}
+    .tier-name{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+    .tier-name.b{color:#2563EB;}.tier-name.s{color:#16A34A;}.tier-name.p{color:#7C3AED;}.tier-name.c{color:#EA580C;}
+    .tier-lbl{font-size:.72rem;color:var(--light);}
+    .tier-rate{font-size:2rem;font-weight:800;margin-bottom:1rem;}
+    .tier-feats{list-style:none;margin-bottom:1.5rem;}
+    .tier-feats li{display:flex;align-items:center;gap:.45rem;font-size:.855rem;color:var(--medium);padding:.28rem 0;}
+    .tier-feats li::before{content:"✓";color:var(--green);font-weight:700;font-size:.78rem;}
+    .tier-btn{display:block;text-align:center;padding:.65rem;border-radius:8px;font-weight:600;font-size:.875rem;text-decoration:none;transition:opacity .2s;border:none;cursor:pointer;width:100%;}
+    .tier-btn.b{background:#EFF6FF;color:#2563EB;}.tier-btn.s{background:#F0FDF4;color:#16A34A;}.tier-btn.p{background:#F5F3FF;color:#7C3AED;}.tier-btn.c{background:#FFF7ED;color:#EA580C;}
+    .tier-btn:hover{opacity:.8;}
+    .tier-note{text-align:center;font-size:.78rem;color:var(--light);}
+
+    /* COMPARE */
+    .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    .cmp-table{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.05);}
+    .cmp-head{display:grid;grid-template-columns:2fr 1.2fr 1fr;background:var(--bg);padding:.9rem 1.25rem;font-size:.82rem;font-weight:600;border-bottom:1px solid var(--border);}
+    .cmp-head .jp{color:var(--primary);}
+    .cmp-row{display:grid;grid-template-columns:2fr 1.2fr 1fr;padding:.8rem 1.25rem;border-top:1px solid var(--border);font-size:.82rem;align-items:center;}
+    .cmp-row .feat{color:var(--medium);font-weight:500;}
+    .ck{color:var(--green);font-size:.85rem;}.cx{color:#EF4444;font-size:.85rem;}
+    .cmp-right h2{font-size:1.9rem;font-weight:800;margin-bottom:1rem;}
+    .cmp-right h2 span{color:var(--primary);}
+    .cmp-right p{color:var(--medium);margin-bottom:2rem;font-size:.95rem;}
+    .cmp-mock{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.1);}
+    .cmp-mock-top{background:var(--dark);padding:1.5rem;color:white;}
+    .cmp-mock-lbl{font-size:.72rem;color:#94A3B8;margin-bottom:.4rem;}
+    .cmp-mock-val{font-size:2rem;font-weight:800;}
+    .cmp-mock-body{padding:1rem 1.25rem;}
+    .cmp-mock-sec{font-size:.72rem;font-weight:600;color:#374151;margin-bottom:.6rem;}
+    .cmp-mock-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid #E5E7EB;font-size:.75rem;}
+    .cmp-mock-row:last-of-type{border-bottom:none;}
+    .earn{color:var(--green);font-weight:600;}
+
+    /* TESTIMONIALS */
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem;}
+    .testi-card{background:white;border:1px solid var(--border);border-radius:16px;padding:1.5rem;}
+    .stars{color:#F59E0B;font-size:.9rem;margin-bottom:1rem;}
+    .testi-txt{font-size:.88rem;color:var(--medium);margin-bottom:1.25rem;line-height:1.75;font-style:italic;}
+    .testi-author{display:flex;align-items:center;gap:.75rem;}
+    .avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:.85rem;flex-shrink:0;}
+    .a1{background:linear-gradient(135deg,#2563EB,#7C3AED);}
+    .a2{background:linear-gradient(135deg,#16A34A,#2563EB);}
+    .a3{background:linear-gradient(135deg,#EA580C,#7C3AED);}
+    .author-name{font-weight:600;font-size:.875rem;}
+    .author-loc{font-size:.72rem;color:var(--light);}
+    .platforms{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;}
+    .plat{display:flex;align-items:center;gap:.4rem;font-size:.875rem;color:var(--medium);font-weight:500;}
+    .plat strong{color:var(--dark);}
+
+    /* FAQ */
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+    .faq-list{display:flex;flex-direction:column;gap:.75rem;}
+    .faq-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:white;}
+    .faq-q{padding:1rem 1.25rem;font-weight:600;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+    .faq-q:hover{background:var(--bg);}
+    .faq-q::after{content:"▾";font-size:.9rem;color:var(--light);transition:transform .2s;flex-shrink:0;margin-left:.5rem;}
+    .faq-a{display:none;padding:0 1.25rem 1rem;font-size:.875rem;color:var(--medium);line-height:1.75;}
+    .faq-item.open .faq-a{display:block;}
+    .faq-item.open .faq-q::after{transform:rotate(180deg);}
+    .faq-cta-box{background:linear-gradient(135deg,#EFF6FF 0%,#F5F3FF 100%);border-radius:20px;padding:2.5rem;text-align:center;}
+    .faq-cta-lbl{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--primary);margin-bottom:1rem;}
+    .faq-cta-box h3{font-size:1.4rem;font-weight:800;margin-bottom:.75rem;}
+    .faq-cta-box p{font-size:.9rem;color:var(--medium);margin-bottom:1.5rem;}
+    .faq-cta-box .btn-primary{padding:.85rem 1.8rem;font-size:1rem;justify-content:center;width:100%;}
+    .faq-cta-note{font-size:.73rem;color:var(--light);margin-top:.75rem;}
+
+    /* FOOTER BADGES */
+    .foot-badges{background:#1E293B;padding:2.5rem 5%;}
+    .foot-badges-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;}
+    .fb{text-align:center;}
+    .fb-icon{font-size:1.4rem;margin-bottom:.4rem;}
+    .fb-title{font-size:.78rem;font-weight:600;color:white;margin-bottom:.15rem;}
+    .fb-sub{font-size:.68rem;color:#64748B;}
+
+    /* FOOTER */
+    footer{background:#0F172A;padding:3rem 5% 2rem;color:#94A3B8;}
+    .foot-inner{max-width:1200px;margin:0 auto;}
+    .foot-top{display:flex;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:2rem;}
+    .foot-logo{font-size:1.25rem;font-weight:800;color:white;margin-bottom:.4rem;}
+    .foot-logo span{color:var(--primary);}
+    .foot-tag{font-size:.82rem;color:#64748B;max-width:260px;}
+    .foot-col h4{font-size:.82rem;font-weight:600;color:white;margin-bottom:.9rem;}
+    .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+    .foot-col a{text-decoration:none;font-size:.82rem;color:#64748B;transition:color .2s;}
+    .foot-col a:hover{color:white;}
+    .foot-bot{border-top:1px solid #1E293B;padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:#64748B;flex-wrap:wrap;gap:1rem;}
+    .foot-bot-links{display:flex;gap:1.5rem;}
+    .foot-bot-links a{text-decoration:none;color:#64748B;transition:color .2s;}
+    .foot-bot-links a:hover{color:white;}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .tiers{grid-template-columns:repeat(2,1fr);}
+      .foot-badges-inner{grid-template-columns:repeat(3,1fr);}
+    }
+    @media(max-width:768px){
+      .hero-wrap{grid-template-columns:1fr;padding:40px 5%;}
+      .laptop-outer{display:none;}
+      .hero-wrap h1{font-size:2.2rem;}
+      .steps{grid-template-columns:repeat(2,1fr);}
+      .steps::before{display:none;}
+      .tiers{grid-template-columns:1fr;}
+      .cmp-grid{grid-template-columns:1fr;}
+      .testi-grid{grid-template-columns:1fr;}
+      .faq-grid{grid-template-columns:1fr;}
+      .foot-badges-inner{grid-template-columns:repeat(2,1fr);}
+      nav .nav-links{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Job<span>Peak</span></a>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How it Works</a></li>
+    <li><a href="#rates">Rates by Tier</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="/login" class="btn-login">Login</a>
+    <a href="/specialties" class="btn-primary">Take Free Practice Test &rarr;</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div>
+    <div class="hero-badge">🚀 Now accepting applications</div>
+    <h1>Get Qualified for<br>Remote <span>AI Work</span></h1>
+    <p class="hero-sub">No résumé. No interviews. Just prove your skills.</p>
+    <ul class="hero-bullets">
+      <li>Work on real AI projects</li>
+      <li>Get paid in USD</li>
+      <li>Flexible schedule</li>
+      <li>Skills-based qualification</li>
+      <li>Work from anywhere</li>
+    </ul>
+    <div class="hero-ctas">
+      <a href="/specialties" class="btn-primary">Take Free Practice Test &rarr;</a>
+      <a href="/specialties" class="btn-outline">See Sample Questions</a>
+    </div>
+    <div class="trust-badges">
+      <div class="trust-badge"><div class="trust-icon g">🔒</div><div><strong>Secure Payments</strong>Powered by Stripe</div></div>
+      <div class="trust-badge"><div class="trust-icon b">💳</div><div><strong>Global Payouts</strong>via PayPal</div></div>
+      <div class="trust-badge"><div class="trust-icon s">🏢</div><div><strong>Registered Business</strong>US, Canada, Australia, NZ</div></div>
+    </div>
+  </div>
+
+  <!-- Laptop Mockup -->
+  <div class="laptop-outer">
+    <div class="laptop-frame">
+      <div class="laptop-notch"></div>
+      <div class="laptop-screen">
+        <div class="db-sidebar">
+          <div class="db-logo">JobPeak</div>
+          <div class="db-nav active">Dashboard</div>
+          <div class="db-nav">Projects</div>
+          <div class="db-nav">Earnings</div>
+          <div class="db-nav">Payments</div>
+          <div class="db-nav">Profile</div>
+          <div class="db-nav">Support</div>
+          <div class="db-nav" style="color:#EF4444;margin-top:8px;">Logout</div>
+        </div>
+        <div class="db-main">
+          <div class="db-welcome">Welcome back, Alex! 👋</div>
+          <div class="db-sub">Here's your progress and next steps</div>
+          <div class="db-stats">
+            <div class="db-stat"><div class="db-stat-lbl">Qualification Score</div><div class="db-stat-val g">85%</div><div class="db-stat-note">Great Job!</div></div>
+            <div class="db-stat"><div class="db-stat-lbl">Projects Completed</div><div class="db-stat-val">24</div><div class="db-stat-note">This month</div></div>
+            <div class="db-stat"><div class="db-stat-lbl">Total Earnings</div><div class="db-stat-val">$1,240</div><div class="db-stat-note">This month</div></div>
+          </div>
+          <div class="db-sec">Available Projects</div>
+          <div class="db-proj"><div style="display:flex;align-items:center;"><div class="dot b"></div><div class="db-proj-name">AI Response Evaluation</div></div><div class="db-proj-rate">$30/hr</div></div>
+          <div class="db-proj"><div style="display:flex;align-items:center;"><div class="dot s"></div><div class="db-proj-name">Math Problem Evaluation</div></div><div class="db-proj-rate">$40/hr</div></div>
+          <div class="db-proj"><div style="display:flex;align-items:center;"><div class="dot p"></div><div class="db-proj-name">Finance Report Review</div></div><div class="db-proj-rate">$50/hr</div></div>
+          <div class="db-proj"><div style="display:flex;align-items:center;"><div class="dot c"></div><div class="db-proj-name">Code Review &amp; Debugging</div></div><div class="db-proj-rate">$100/hr</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="laptop-base"></div>
+    <div class="laptop-foot"></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" style="background:var(--bg);">
+  <div class="inner">
+    <div class="lbl">Simple Process</div>
+    <h2 class="h2">How <span>JobPeak</span> Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num s1"><div class="step-badge" style="background:var(--primary);">1</div>📝</div>
+        <h3>Practice Free</h3>
+        <p>Take a free practice test with 15 sample questions.</p>
+      </div>
+      <div class="step">
+        <div class="step-num s2"><div class="step-badge" style="background:var(--green);">2</div>📊</div>
+        <h3>Get Your Score</h3>
+        <p>See your score and discover your strongest areas.</p>
+      </div>
+      <div class="step">
+        <div class="step-num s3"><div class="step-badge" style="background:var(--purple);">3</div>🎯</div>
+        <h3>Take Cognition Test</h3>
+        <p>Pass the paid Cognition Test to get qualified.</p>
+      </div>
+      <div class="step">
+        <div class="step-num s4"><div class="step-badge" style="background:var(--orange);">4</div>💼</div>
+        <h3>Unlock AI Work</h3>
+        <p>Access real projects and start earning in USD.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER PATH -->
+<section id="rates">
+  <div class="inner">
+    <div class="lbl">Earnings</div>
+    <h2 class="h2">Choose Your <span>AI Career Path</span></h2>
+    <p class="sub">Pay scales with the difficulty of the work and the rigour of the qualification. Rates published up front.</p>
+    <div class="tiers">
+      <div class="tier-card">
+        <div class="tier-hdr"><div class="tier-icon b">📋</div><span class="tier-name b">Basic</span></div>
+        <div class="tier-lbl">Up to</div><div class="tier-rate">$30/hr</div>
+        <ul class="tier-feats"><li>AI output review</li><li>Content classification</li><li>Data annotation</li><li>Generalist tasks</li></ul>
+        <a href="/specialties" class="tier-btn b">Explore Basic</a>
+      </div>
+      <div class="tier-card">
+        <div class="tier-hdr"><div class="tier-icon s">🔬</div><span class="tier-name s">STEM</span></div>
+        <div class="tier-lbl">Up to</div><div class="tier-rate">$40/hr</div>
+        <ul class="tier-feats"><li>Mathematics</li><li>Physics</li><li>Chemistry</li><li>Biology</li></ul>
+        <a href="/specialties" class="tier-btn s">Explore STEM</a>
+      </div>
+      <div class="tier-card">
+        <div class="tier-hdr"><div class="tier-icon p">💼</div><span class="tier-name p">Professional</span></div>
+        <div class="tier-lbl">Up to</div><div class="tier-rate">$50/hr</div>
+        <ul class="tier-feats"><li>Finance &amp; Accounting</li><li>Legal (Coming Soon)</li><li>Medicine (Coming Soon)</li><li>Business Analysis</li></ul>
+        <a href="/specialties" class="tier-btn p">Explore Professional</a>
+      </div>
+      <div class="tier-card">
+        <div class="tier-hdr"><div class="tier-icon c">💻</div><span class="tier-name c">Coding</span></div>
+        <div class="tier-lbl">Up to</div><div class="tier-rate">$100/hr</div>
+        <ul class="tier-feats"><li>Code review</li><li>Debugging</li><li>AI-generated code eval</li><li>LLM evaluation</li></ul>
+        <a href="/specialties" class="tier-btn c">Explore Coding</a>
+      </div>
+    </div>
+    <p class="tier-note">Pay scales with the difficulty of the work and the rigour of the qualification. Rates published up front.</p>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section style="background:var(--bg);">
+  <div class="inner">
+    <div class="cmp-grid">
+      <div class="cmp-table">
+        <div class="cmp-head"><div>Feature</div><div>Traditional Jobs</div><div class="jp">JobPeak</div></div>
+        <div class="cmp-row"><div class="feat">Application process</div><div><span class="cx">✗</span> Résumé required</div><div><span class="ck">✓</span> Skills only</div></div>
+        <div class="cmp-row"><div class="feat">Interview rounds</div><div><span class="cx">✗</span> Multiple rounds</div><div><span class="ck">✓</span> One-time test</div></div>
+        <div class="cmp-row"><div class="feat">Qualification time</div><div><span class="cx">✗</span> Weeks to hear back</div><div><span class="ck">✓</span> Instant path</div></div>
+        <div class="cmp-row"><div class="feat">Location</div><div><span class="cx">✗</span> Office bound</div><div><span class="ck">✓</span> Work anywhere</div></div>
+        <div class="cmp-row"><div class="feat">Pay transparency</div><div><span class="cx">✗</span> Salary negotiation</div><div><span class="ck">✓</span> Transparent rates</div></div>
+        <div class="cmp-row"><div class="feat">Opportunities</div><div><span class="cx">✗</span> Limited scope</div><div><span class="ck">✓</span> Global AI work</div></div>
+      </div>
+      <div class="cmp-right">
+        <h2>A Better Way<br>to <span>Work</span></h2>
+        <p>Join thousands of qualified contributors earning from real AI projects — on their own terms.</p>
+        <div class="cmp-mock">
+          <div class="cmp-mock-top"><div class="cmp-mock-lbl">Total Earnings</div><div class="cmp-mock-val">$1,240.00</div></div>
+          <div class="cmp-mock-body">
+            <div class="cmp-mock-sec">Recent Payouts</div>
+            <div class="cmp-mock-row"><span style="color:var(--medium)">AI Response Evaluation</span><span class="earn">+$120</span></div>
+            <div class="cmp-mock-row"><span style="color:var(--medium)">Math Problem Review</span><span class="earn">+$240</span></div>
+            <div class="cmp-mock-row"><span style="color:var(--medium)">Code Review Task</span><span class="earn">+$880</span></div>
+            <div style="margin-top:10px;font-size:.7rem;color:var(--light);text-align:center;">See how JobPeak works inside your dashboard</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="inner">
+    <div class="lbl">Reviews</div>
+    <h2 class="h2">Loved by <span>AI Contributors</span> Worldwide</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">"JobPeak changed the way I work. I love the flexibility and the transparent pay. The process was simple and straightforward."</p>
+        <div class="testi-author"><div class="avatar a1">SM</div><div><div class="author-name">Sarah M.</div><div class="author-loc">Texas, USA</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">"I was able to qualify for the STEM tier and now I work on math evaluation projects. Great platform for people who love AI!"</p>
+        <div class="testi-author"><div class="avatar a2">DK</div><div><div class="author-name">Daniel K.</div><div class="author-loc">California, USA</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">"As a freelancer, I finally have consistent work without chasing clients. The payouts are reliable and on time."</p>
+        <div class="testi-author"><div class="avatar a3">MR</div><div><div class="author-name">Michelle R.</div><div class="author-loc">Florida, USA</div></div></div>
+      </div>
+    </div>
+    <div class="platforms">
+      <div class="plat">⭐ <strong>4.8/5</strong>&nbsp;from 2,500+ contributors</div>
+      <div class="plat">🟢 Trustpilot</div>
+      <div class="plat">🔵 Sitejabber</div>
+      <div class="plat">🔴 Google ★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bg);">
+  <div class="inner">
+    <div class="faq-grid">
+      <div>
+        <div class="lbl" style="text-align:left;">FAQ</div>
+        <h2 class="h2" style="text-align:left;font-size:1.85rem;">Frequently Asked<br>Questions</h2>
+        <div class="faq-list" style="margin-top:2rem;">
+          <div class="faq-item open">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why is the Cognition Test paid?</div>
+            <div class="faq-a">The Cognition Test requires significant infrastructure to administer fairly — question banks across multiple domains, automated marking, and identity verification. The fee covers these operational costs and signals genuine intent from applicants.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do payments work?</div>
+            <div class="faq-a">Payments are made bi-weekly in USD via Stripe or PayPal. You'll receive a full breakdown of completed tasks and earnings in your dashboard before each payout.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need coding skills to join?</div>
+            <div class="faq-a">No — coding is just one of four tiers. Basic covers generalist work, STEM covers sciences, and Professional covers finance and accounting. Choose the tier that matches your skills.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens if I don't pass the test?</div>
+            <div class="faq-a">You can retake the free practice test anytime. If you don't pass the Cognition Test, you'll receive detailed feedback and can reapply after a 30-day period.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does the qualification last?</div>
+            <div class="faq-a">Your qualification is valid for 12 months from the date you pass. A short re-qualification is required annually to confirm your skills remain current.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">When can I start working?</div>
+            <div class="faq-a">Once you pass the Cognition Test you gain access to your contributor dashboard where available projects are listed by tier. You can start applying immediately after qualification.</div>
+          </div>
+        </div>
+      </div>
+      <div class="faq-cta-box">
+        <div class="faq-cta-lbl">Ready to get started?</div>
+        <h3>Take the First Step Toward Your AI Career</h3>
+        <p>Start with the free practice test and discover where your skills can take you.</p>
+        <a href="/specialties" class="btn-primary">Take Free Practice Test &rarr;</a>
+        <div class="faq-cta-note">No payment &bull; No commitment &bull; Takes 5 minutes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER BADGES -->
+<div class="foot-badges">
+  <div class="foot-badges-inner">
+    <div class="fb"><div class="fb-icon">📄</div><div class="fb-title">No CV Required</div><div class="fb-sub">Skills over resume</div></div>
+    <div class="fb"><div class="fb-icon">🚫</div><div class="fb-title">No Interviews</div><div class="fb-sub">Just one test</div></div>
+    <div class="fb"><div class="fb-icon">💵</div><div class="fb-title">USD Payments</div><div class="fb-sub">Bi-weekly payouts</div></div>
+    <div class="fb"><div class="fb-icon">🌍</div><div class="fb-title">Remote First</div><div class="fb-sub">Work from anywhere</div></div>
+    <div class="fb"><div class="fb-icon">📈</div><div class="fb-title">Grow Your Skills</div><div class="fb-sub">Level up &amp; earn more</div></div>
+    <div class="fb"><div class="fb-icon">🔐</div><div class="fb-title">Secure &amp; Trusted</div><div class="fb-sub">Your data is safe</div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">Job<span>Peak</span></div>
+        <p class="foot-tag">Qualifying independent subcontractors for paid AI support work. One test, no CV, no interview.</p>
+      </div>
+      <div class="foot-col"><h4>Platform</h4><ul><li><a href="/">Home</a></li><li><a href="/specialties">Specialties</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="foot-col"><h4>Support</h4><ul><li><a href="mailto:support@jobpeak.com">support@jobpeak.com</a></li><li><a href="mailto:hello@jobpeak.com">hello@jobpeak.com</a></li><li><a href="/login">Subcontractor Login</a></li></ul></div>
+      <div class="foot-col"><h4>Legal</h4><ul><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms of Service</a></li><li><a href="/gdpr">GDPR</a></li></ul></div>
+    </div>
+    <div class="foot-bot">
+      <div>Copyright &copy; JobPeak 2026. Operated by Galco FZ-LLC.</div>
+      <div class="foot-bot-links"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/gdpr">GDPR</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
