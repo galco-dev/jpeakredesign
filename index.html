@@ -107,21 +107,37 @@
     .step p{font-size:.82rem;color:var(--body);line-height:1.6;}
 
     /* TIERS */
-    .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3.5rem;}
-    .tier-card{background:var(--white);padding:2rem 1.5rem;display:flex;flex-direction:column;}
-    .tier-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;}
+    .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3.5rem;}
+    .tier-card{background:var(--white);padding:0;display:flex;flex-direction:column;}
+    .tier-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+    .tier-body{padding:1.75rem 1.5rem;flex:1;display:flex;flex-direction:column;}
+    .tier-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;}
     .tier-tag.b{color:var(--blue);}.tier-tag.s{color:var(--green);}.tier-tag.p{color:var(--yellow);}.tier-tag.c{color:var(--accent);}
-    .tier-rate{font-size:2.2rem;font-weight:500;color:var(--dark);letter-spacing:-.05em;margin-bottom:.25rem;}
-    .tier-lbl{font-size:.72rem;color:var(--muted);margin-bottom:1.5rem;}
-    .tier-divider{height:1px;background:var(--border);margin-bottom:1.5rem;}
-    .tier-feats{list-style:none;flex:1;margin-bottom:1.5rem;}
-    .tier-feats li{font-size:.82rem;color:var(--body);padding:.35rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem;letter-spacing:-.01em;}
-    .tier-feats li:last-child{border-bottom:none;}
-    .tier-feats li::before{content:"";width:4px;height:4px;flex-shrink:0;}
-    .tier-feats li.b::before{background:var(--blue);}.tier-feats li.s::before{background:var(--green);}.tier-feats li.p::before{background:var(--yellow);}.tier-feats li.c::before{background:var(--accent);}
-    .tier-cta{display:block;text-align:center;padding:.6rem;font-size:.82rem;font-weight:600;border:1px solid var(--border);transition:all .15s;letter-spacing:-.01em;}
-    .tier-cta:hover{background:var(--dark);color:white;border-color:var(--dark);}
-    .tier-note{text-align:center;font-size:.75rem;color:var(--muted);margin-top:1.25rem;letter-spacing:0;}
+    .tier-name{font-size:1.15rem;font-weight:600;color:var(--dark);margin-bottom:.3rem;letter-spacing:-.03em;}
+    .tier-desc{font-size:.82rem;color:var(--body);margin-bottom:1rem;line-height:1.55;}
+    .tier-badge{display:inline-block;font-size:.68rem;font-weight:600;padding:.25rem .65rem;margin-bottom:1rem;letter-spacing:-.01em;}
+    .tier-badge.beginner{background:#e8fdf0;color:#16a34a;}
+    .tier-badge.intermediate{background:#e8f0ff;color:#2563eb;}
+    .tier-badge.advanced{background:#f0eaff;color:var(--accent);}
+    .tier-section-lbl{font-size:.65rem;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;}
+    .tier-best{list-style:none;margin-bottom:1rem;}
+    .tier-best li{font-size:.8rem;color:var(--body);padding:.2rem 0;display:flex;align-items:center;gap:.5rem;}
+    .tier-best li::before{content:"👤";font-size:.7rem;}
+    .tier-feats{list-style:none;margin-bottom:1.25rem;}
+    .tier-feats li{font-size:.8rem;color:var(--body);padding:.2rem 0;display:flex;align-items:center;gap:.5rem;}
+    .tier-feats li::before{content:"✓";font-weight:700;}
+    .tier-feats li.b::before{color:var(--blue);}.tier-feats li.s::before{color:var(--green);}.tier-feats li.p::before{color:var(--yellow);}.tier-feats li.c::before{color:var(--accent);}
+    .tier-meta{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1rem;padding-top:.75rem;border-top:1px solid var(--border);}
+    .tier-earn{}.tier-earn-lbl{font-size:.65rem;color:var(--muted);}
+    .tier-earn-val{font-size:1.6rem;font-weight:600;letter-spacing:-.04em;}
+    .tier-earn-val.b{color:var(--blue);}.tier-earn-val.s{color:var(--green);}.tier-earn-val.p{color:var(--yellow);}.tier-earn-val.c{color:var(--accent);}
+    .tier-time{text-align:right;}.tier-time-lbl{font-size:.65rem;color:var(--muted);}
+    .tier-time-val{font-size:.9rem;font-weight:700;color:var(--dark);}
+    .tier-foot{font-size:.68rem;color:var(--muted);display:flex;gap:.75rem;margin-bottom:1rem;}
+    .tier-cta{display:block;text-align:center;padding:.65rem;font-size:.85rem;font-weight:600;background:var(--blue);color:white;border:none;cursor:pointer;letter-spacing:-.01em;transition:opacity .15s;margin-top:auto;}
+    .tier-cta:hover{opacity:.88;}
+    .tier-cta.s{background:var(--green);}
+    .tier-cta.c{background:var(--accent);}
 
     /* COMPARE */
     .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
@@ -205,14 +221,15 @@
 
     /* RESPONSIVE */
     @media(max-width:1024px){
-      .tiers,.steps{grid-template-columns:repeat(2,1fr);}
+      .tiers{grid-template-columns:1fr;}
+      .steps{grid-template-columns:repeat(2,1fr);}
       .foot-trust-inner{grid-template-columns:repeat(3,1fr);}
     }
     @media(max-width:768px){
       .hero-wrap{grid-template-columns:1fr;padding:60px 24px;}
       .laptop-outer{display:none;}
       .hero-wrap h1{font-size:2rem;}
-      .tiers,.steps{grid-template-columns:1fr;}
+      .steps{grid-template-columns:1fr;}
       .cmp-grid,.faq-grid{grid-template-columns:1fr;}
       .testi-grid{grid-template-columns:1fr;}
       .foot-trust-inner{grid-template-columns:repeat(2,1fr);}
@@ -259,7 +276,6 @@
     <div class="trust-row">
       <div class="trust-item"><strong>Secure Payments</strong> · Powered by Stripe</div>
       <div class="trust-item"><strong>Global Payouts</strong> · via PayPal</div>
-      <div class="trust-item"><strong>Registered</strong> · US, Canada, Australia, NZ</div>
     </div>
   </div>
 
@@ -340,60 +356,99 @@
     <h2 class="sec-title center">Choose Your <em>AI Career Path</em></h2>
     <p class="sec-sub center">Pay scales with the difficulty of the work and the rigour of the qualification. Rates published up front.</p>
     <div class="tiers">
+
+      <!-- AI Generalist -->
       <div class="tier-card">
-        <div class="tier-tag b">Basic</div>
-        <div class="tier-rate">$30<span style="font-size:1rem;color:var(--muted)">/hr</span></div>
-        <div class="tier-lbl">Up to</div>
-        <div class="tier-divider"></div>
-        <ul class="tier-feats">
-          <li class="b">AI output review</li>
-          <li class="b">Content classification</li>
-          <li class="b">Data annotation</li>
-          <li class="b">Generalist tasks</li>
-        </ul>
-        <a href="/specialties" class="tier-cta">Explore Basic</a>
+        <img class="tier-img" src="images/generalist.jpg" alt="AI Generalist — woman reviewing AI responses on laptop">
+        <div class="tier-body">
+          <div class="tier-tag b">Basic</div>
+          <div class="tier-name">AI Generalist</div>
+          <div class="tier-desc">Review AI responses &amp; improve AI models</div>
+          <span class="tier-badge beginner">Beginner Friendly</span>
+          <div class="tier-section-lbl">Best For</div>
+          <ul class="tier-best">
+            <li>Students</li>
+            <li>Fresh Graduates</li>
+            <li>Career Switchers</li>
+            <li>Freelancers</li>
+          </ul>
+          <div class="tier-section-lbl">What you'll do</div>
+          <ul class="tier-feats">
+            <li class="b">Review AI responses</li>
+            <li class="b">Data annotation</li>
+            <li class="b">Content classification</li>
+            <li class="b">Prompt evaluation</li>
+          </ul>
+          <div class="tier-meta">
+            <div class="tier-earn"><div class="tier-earn-lbl">Earn up to</div><div class="tier-earn-val b">$30/hr</div></div>
+            <div class="tier-time"><div class="tier-time-lbl">Test Time</div><div class="tier-time-val">15 mins</div></div>
+          </div>
+          <div class="tier-foot">🖥 Remote &nbsp; 🌐 Worldwide &nbsp; 🕐 Flexible Hours</div>
+          <a href="/specialties" class="tier-cta">Take Practice Test</a>
+        </div>
       </div>
+
+      <!-- STEM AI Trainer -->
       <div class="tier-card">
-        <div class="tier-tag s">STEM</div>
-        <div class="tier-rate">$40<span style="font-size:1rem;color:var(--muted)">/hr</span></div>
-        <div class="tier-lbl">Up to</div>
-        <div class="tier-divider"></div>
-        <ul class="tier-feats">
-          <li class="s">Mathematics</li>
-          <li class="s">Physics</li>
-          <li class="s">Chemistry</li>
-          <li class="s">Biology</li>
-        </ul>
-        <a href="/specialties" class="tier-cta">Explore STEM</a>
+        <img class="tier-img" src="images/stem.jpg" alt="STEM AI Trainer — student with math equations">
+        <div class="tier-body">
+          <div class="tier-tag s">STEM</div>
+          <div class="tier-name">STEM AI Trainer</div>
+          <div class="tier-desc">Work on Math, Science &amp; STEM AI projects</div>
+          <span class="tier-badge intermediate">Intermediate</span>
+          <div class="tier-section-lbl">Best For</div>
+          <ul class="tier-best">
+            <li>STEM Students</li>
+            <li>Graduates</li>
+            <li>Subject Matter Experts</li>
+          </ul>
+          <div class="tier-section-lbl">What you'll do</div>
+          <ul class="tier-feats">
+            <li class="s">Solve &amp; verify STEM problems</li>
+            <li class="s">Check AI answers</li>
+            <li class="s">Improve explanations</li>
+            <li class="s">Data labeling &amp; more</li>
+          </ul>
+          <div class="tier-meta">
+            <div class="tier-earn"><div class="tier-earn-lbl">Earn up to</div><div class="tier-earn-val s">$40/hr</div></div>
+            <div class="tier-time"><div class="tier-time-lbl">Test Time</div><div class="tier-time-val">20 mins</div></div>
+          </div>
+          <div class="tier-foot">🖥 Remote &nbsp; 🌐 Worldwide &nbsp; 🕐 Flexible Hours</div>
+          <a href="/specialties" class="tier-cta s">Take Practice Test</a>
+        </div>
       </div>
+
+      <!-- Coding AI Trainer -->
       <div class="tier-card">
-        <div class="tier-tag p">Professional</div>
-        <div class="tier-rate">$50<span style="font-size:1rem;color:var(--muted)">/hr</span></div>
-        <div class="tier-lbl">Up to</div>
-        <div class="tier-divider"></div>
-        <ul class="tier-feats">
-          <li class="p">Finance &amp; Accounting</li>
-          <li class="p">Legal (Coming Soon)</li>
-          <li class="p">Medicine (Coming Soon)</li>
-          <li class="p">Business Analysis</li>
-        </ul>
-        <a href="/specialties" class="tier-cta">Explore Professional</a>
+        <img class="tier-img" src="images/coding.jpg" alt="Coding AI Trainer — developer reviewing code">
+        <div class="tier-body">
+          <div class="tier-tag c">Coding</div>
+          <div class="tier-name">Coding AI Trainer</div>
+          <div class="tier-desc">Evaluate code &amp; improve AI coding models</div>
+          <span class="tier-badge advanced">Advanced</span>
+          <div class="tier-section-lbl">Best For</div>
+          <ul class="tier-best">
+            <li>Developers</li>
+            <li>Programmers</li>
+            <li>CS Students</li>
+          </ul>
+          <div class="tier-section-lbl">What you'll do</div>
+          <ul class="tier-feats">
+            <li class="c">Code review &amp; evaluation</li>
+            <li class="c">Bug detection</li>
+            <li class="c">Test case generation</li>
+            <li class="c">Code improvement</li>
+          </ul>
+          <div class="tier-meta">
+            <div class="tier-earn"><div class="tier-earn-lbl">Earn up to</div><div class="tier-earn-val c">$50/hr</div></div>
+            <div class="tier-time"><div class="tier-time-lbl">Test Time</div><div class="tier-time-val">20 mins</div></div>
+          </div>
+          <div class="tier-foot">🖥 Remote &nbsp; 🌐 Worldwide &nbsp; 🕐 Flexible Hours</div>
+          <a href="/specialties" class="tier-cta c">Take Practice Test</a>
+        </div>
       </div>
-      <div class="tier-card">
-        <div class="tier-tag c">Coding</div>
-        <div class="tier-rate">$100<span style="font-size:1rem;color:var(--muted)">/hr</span></div>
-        <div class="tier-lbl">Up to</div>
-        <div class="tier-divider"></div>
-        <ul class="tier-feats">
-          <li class="c">Code review</li>
-          <li class="c">Debugging</li>
-          <li class="c">AI-generated code eval</li>
-          <li class="c">LLM evaluation</li>
-        </ul>
-        <a href="/specialties" class="tier-cta">Explore Coding</a>
-      </div>
+
     </div>
-    <p class="tier-note">Pay scales with the difficulty of the work and the rigour of the qualification.</p>
   </div>
 </div>
 
