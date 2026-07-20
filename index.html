@@ -91,12 +91,13 @@
     .sec-sub.center{text-align:center;max-width:560px;margin:0 auto 3.5rem;}
 
     /* STEPS */
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3.5rem;}
-    .step{background:var(--white);padding:2rem 1.5rem;position:relative;}
-    .step-num{font-size:.65rem;font-weight:700;color:var(--accent);margin-bottom:1rem;letter-spacing:.04em;}
-    .step-icon{font-size:1.5rem;margin-bottom:1rem;}
-    .step h3{font-size:.95rem;font-weight:600;color:var(--dark);margin-bottom:.4rem;letter-spacing:-.02em;}
-    .step p{font-size:.82rem;color:var(--body);line-height:1.6;}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);margin-top:3.5rem;position:relative;}
+    .steps::before{content:"";position:absolute;top:calc(1.5rem + 49px);left:calc(12.5% + 52px);right:calc(12.5% + 52px);height:0;border-top:1px dashed var(--muted);z-index:0;}
+    .step{background:transparent;padding:1.5rem 1rem 2rem;text-align:center;position:relative;z-index:1;}
+    .step-circle{width:100px;height:100px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;position:relative;}
+    .step-badge{position:absolute;top:0;left:50%;margin-left:-35px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:white;font-size:.62rem;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:0;}
+    .step h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;letter-spacing:-.02em;}
+    .step p{font-size:.82rem;color:var(--body);line-height:1.6;text-align:center;}
 
     /* TIERS — black/white/gray + single purple accent */
     .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3.5rem;}
@@ -306,26 +307,34 @@
     <h2 class="sec-title center">How <em>Jobpeak</em> Works</h2>
     <div class="steps">
       <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-icon">📝</div>
+        <div class="step-circle">
+          <div class="step-badge">1</div>
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#9a68f8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+        </div>
         <h3>Practice Free</h3>
         <p>Take a free practice test with 15 sample questions.</p>
       </div>
       <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-icon">📊</div>
+        <div class="step-circle">
+          <div class="step-badge">2</div>
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#9a68f8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+        </div>
         <h3>Get Your Score</h3>
         <p>See your score and discover your strongest areas.</p>
       </div>
       <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-icon">🎯</div>
+        <div class="step-circle">
+          <div class="step-badge">3</div>
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#9a68f8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+        </div>
         <h3>Take Cognition Test</h3>
         <p>Pass the paid Cognition Test to get qualified.</p>
       </div>
       <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-icon">💼</div>
+        <div class="step-circle">
+          <div class="step-badge">4</div>
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#9a68f8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
         <h3>Unlock AI Work</h3>
         <p>Access real projects and start earning in USD.</p>
       </div>
