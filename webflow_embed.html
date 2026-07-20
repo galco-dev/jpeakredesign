@@ -1,0 +1,594 @@
+<!-- PASTE THIS ENTIRE FILE INTO THE WEBFLOW CODE EMBED BLOCK -->
+<!-- Clear the Page Settings head code — it is not needed -->
+
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --accent:#9a68f8;
+      --accent-light:#f0eaff;
+      --dark:#161616;
+      --mid:#292929;
+      --body:#505050;
+      --muted:#ababab;
+      --border:#e3e3e3;
+      --bg:#f3f3f3;
+      --bg-light:#fbfbfb;
+      --white:#ffffff;
+    }
+    body{font-family:'Inter Tight',sans-serif;color:var(--body);line-height:1.5;letter-spacing:-.03em;background:var(--white);}
+    a{color:inherit;text-decoration:none;}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;max-width:100%;}
+    .nav-inner{max-width:1186px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-size:1.1rem;font-weight:700;color:var(--dark);letter-spacing:-.04em;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{font-size:.875rem;font-weight:500;color:var(--body);transition:color .15s;}
+    .nav-links a:hover{color:var(--dark);}
+    .nav-actions{display:flex;align-items:center;gap:1.25rem;}
+    .btn-ghost{font-size:.875rem;font-weight:500;color:var(--body);transition:color .15s;}
+    .btn-ghost:hover{color:var(--dark);}
+    .btn-dark{background:var(--dark);color:var(--white);padding:.5rem 1.1rem;font-size:.875rem;font-weight:600;letter-spacing:-.02em;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.3rem;transition:opacity .15s;}
+    .btn-dark:hover{opacity:.85;}
+    .btn-outline-dark{background:transparent;color:var(--dark);border:1px solid var(--dark);padding:.5rem 1.1rem;font-size:.875rem;font-weight:600;letter-spacing:-.02em;cursor:pointer;display:inline-flex;align-items:center;transition:background .15s;}
+    .btn-outline-dark:hover{background:var(--bg);}
+
+    /* HERO */
+    .hero-wrap{max-width:1186px;margin:0 auto;padding:100px 24px 80px;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .hero-tag{display:inline-block;font-size:.75rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:1.25rem;}
+    .hero-wrap h1{font-size:2.8rem;font-weight:500;line-height:1.15;color:var(--dark);margin-bottom:1rem;letter-spacing:-.05em;}
+    .hero-wrap h1 em{font-style:normal;color:var(--accent);}
+    .hero-sub{font-size:1rem;color:var(--body);margin-bottom:1.5rem;line-height:1.6;letter-spacing:-.01em;}
+    .hero-bullets{list-style:none;margin-bottom:2rem;display:flex;flex-direction:column;gap:.5rem;}
+    .hero-bullets li{display:flex;align-items:center;gap:.6rem;font-size:.9rem;color:var(--body);}
+    .hero-bullets li::before{content:"";width:5px;height:5px;background:var(--accent);flex-shrink:0;}
+    .hero-ctas{display:flex;gap:.75rem;margin-bottom:2.5rem;flex-wrap:wrap;}
+    .hero-ctas .btn-dark,.hero-ctas .btn-outline-dark{padding:.7rem 1.4rem;font-size:.9rem;}
+    .trust-row{display:flex;gap:1.75rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--border);}
+    .trust-item{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--muted);}
+    .trust-item strong{color:var(--body);font-weight:600;}
+
+    /* LAPTOP */
+    .laptop-outer{position:relative;}
+    .laptop-frame{background:#1a1a1a;border-radius:12px 12px 0 0;padding:10px 10px 0;}
+    .laptop-bar{width:40px;height:4px;background:#333;border-radius:2px;margin:0 auto 6px;}
+    .laptop-screen{background:#fafafa;border-radius:6px 6px 0 0;overflow:hidden;height:340px;display:flex;}
+    .laptop-base{height:14px;background:#222;border-radius:0 0 3px 3px;}
+    .laptop-foot{width:36%;height:10px;background:#111;margin:0 auto;border-radius:0 0 5px 5px;}
+    .db-side{width:105px;background:#0f0f0f;padding:10px 6px;flex-shrink:0;}
+    .db-logo-sm{color:white;font-size:.65rem;font-weight:700;padding:4px 8px;margin-bottom:10px;letter-spacing:-.02em;}
+    .db-item{padding:5px 8px;font-size:.6rem;color:#666;margin-bottom:1px;}
+    .db-item.on{background:#9a68f81a;color:#9a68f8;}
+    .db-main{flex:1;padding:10px;overflow:hidden;}
+    .db-hi{font-size:.68rem;font-weight:600;color:#161616;margin-bottom:1px;letter-spacing:-.02em;}
+    .db-sub-sm{font-size:.55rem;color:#ababab;margin-bottom:8px;}
+    .db-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:8px;}
+    .db-card{background:white;border:1px solid #e3e3e3;padding:6px;}
+    .db-card-lbl{font-size:.5rem;color:#ababab;margin-bottom:2px;}
+    .db-card-val{font-size:.78rem;font-weight:600;color:#161616;}
+    .db-card-val.g{color:#161616;}
+    .db-card-note{font-size:.45rem;color:#ababab;margin-top:1px;}
+    .db-sec-lbl{font-size:.58rem;font-weight:600;color:#292929;margin-bottom:4px;}
+    .db-row{display:flex;align-items:center;justify-content:space-between;padding:4px 6px;background:white;border:1px solid #e3e3e3;margin-bottom:2px;}
+    .db-row-name{font-size:.55rem;color:#161616;}
+    .db-row-rate{font-size:.58rem;font-weight:700;color:#9a68f8;}
+    .db-dot{width:5px;height:5px;margin-right:4px;flex-shrink:0;background:var(--muted);}
+
+    /* SECTIONS */
+    .section{padding:120px 24px;}
+    .section.alt{background:var(--bg);}
+    .inner{max-width:1186px;margin:0 auto;}
+    .overline{font-size:.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem;}
+    .overline.center{text-align:center;}
+    .sec-title{font-size:2rem;font-weight:500;color:var(--dark);line-height:1.2;letter-spacing:-.04em;margin-bottom:1rem;}
+    .sec-title.center{text-align:center;}
+    .sec-title em{font-style:normal;color:var(--accent);}
+    .sec-sub{font-size:.9rem;color:var(--body);line-height:1.65;letter-spacing:-.01em;}
+    .sec-sub.center{text-align:center;max-width:560px;margin:0 auto 3.5rem;}
+
+    /* STEPS */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);margin-top:3.5rem;position:relative;}
+    .steps::before{content:"";position:absolute;top:calc(1.5rem + 49px);left:calc(12.5% + 52px);right:calc(12.5% + 52px);height:0;border-top:1px dashed var(--muted);z-index:0;}
+    .step{background:transparent;padding:1.5rem 1rem 2rem;text-align:center;position:relative;z-index:1;}
+    .step-circle{width:100px;height:100px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;position:relative;}
+    .step-badge{position:absolute;top:0;left:50%;margin-left:-35px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:white;font-size:.62rem;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:0;}
+    .step h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;letter-spacing:-.02em;}
+    .step p{font-size:.82rem;color:var(--body);line-height:1.6;text-align:center;}
+
+    /* TIERS — black/white/gray + single purple accent */
+    .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3.5rem;}
+    .tier-card{background:var(--white);padding:0;display:flex;flex-direction:column;}
+    .tier-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+    .tier-body{padding:1.75rem 1.5rem;flex:1;display:flex;flex-direction:column;}
+    .tier-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;color:var(--accent);}
+    .tier-name{font-size:1.15rem;font-weight:600;color:var(--dark);margin-bottom:.3rem;letter-spacing:-.03em;}
+    .tier-desc{font-size:.82rem;color:var(--body);margin-bottom:1rem;line-height:1.55;}
+    .tier-badge{display:inline-block;font-size:.68rem;font-weight:600;padding:.25rem .65rem;margin-bottom:1rem;letter-spacing:-.01em;background:var(--bg);color:var(--body);}
+    .tier-section-lbl{font-size:.65rem;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;}
+    .tier-best{list-style:none;margin-bottom:1rem;}
+    .tier-best li{font-size:.8rem;color:var(--body);padding:.2rem 0;display:flex;align-items:center;gap:.5rem;}
+    .tier-best li::before{content:"";width:4px;height:4px;background:var(--muted);flex-shrink:0;}
+    .tier-feats{list-style:none;margin-bottom:1.25rem;}
+    .tier-feats li{font-size:.8rem;color:var(--body);padding:.2rem 0;display:flex;align-items:center;gap:.5rem;}
+    .tier-feats li::before{content:"✓";font-weight:700;color:var(--accent);}
+    .tier-meta{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1rem;padding-top:.75rem;border-top:1px solid var(--border);}
+    .tier-earn{}.tier-earn-lbl{font-size:.65rem;color:var(--muted);}
+    .tier-earn-val{font-size:1.6rem;font-weight:600;letter-spacing:-.04em;color:var(--accent);}
+    .tier-time{text-align:right;}.tier-time-lbl{font-size:.65rem;color:var(--muted);}
+    .tier-time-val{font-size:.9rem;font-weight:700;color:var(--dark);}
+    .tier-foot{font-size:.68rem;color:var(--muted);display:flex;gap:.75rem;margin-bottom:1rem;}
+    .tier-cta{display:block;text-align:center;padding:.65rem;font-size:.85rem;font-weight:600;background:var(--dark);color:white;border:none;cursor:pointer;letter-spacing:-.01em;transition:opacity .15s;margin-top:auto;}
+    .tier-cta:hover{opacity:.8;}
+
+    /* COMPARE */
+    .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .cmp-table{border:1px solid var(--border);}
+    .cmp-head{display:grid;grid-template-columns:2fr 1.1fr 1fr;padding:.75rem 1rem;font-size:.75rem;font-weight:600;color:var(--dark);background:var(--bg);border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+    .cmp-head .jp{color:var(--accent);}
+    .cmp-row{display:grid;grid-template-columns:2fr 1.1fr 1fr;padding:.75rem 1rem;border-top:1px solid var(--border);font-size:.8rem;align-items:center;}
+    .feat{color:var(--body);font-weight:500;}
+    .ck{color:var(--dark);font-weight:700;}
+    .cx{color:var(--muted);}
+    .cmp-right{}
+    .cmp-right p{font-size:.9rem;color:var(--body);margin-bottom:2rem;line-height:1.65;letter-spacing:-.01em;}
+    .earnings-mock{border:1px solid var(--border);}
+    .earnings-top{background:var(--dark);padding:1.25rem;color:white;}
+    .earnings-lbl{font-size:.65rem;color:#666;margin-bottom:.3rem;letter-spacing:.02em;}
+    .earnings-val{font-size:1.8rem;font-weight:500;letter-spacing:-.04em;}
+    .earnings-body{padding:1rem;}
+    .earnings-sec{font-size:.68rem;font-weight:600;color:var(--mid);margin-bottom:.5rem;letter-spacing:.02em;}
+    .earnings-row{display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid var(--border);font-size:.78rem;}
+    .earnings-row:last-of-type{border-bottom:none;}
+    .earn-pos{color:var(--dark);font-weight:600;}
+    .earnings-note{font-size:.68rem;color:var(--muted);margin-top:.75rem;letter-spacing:0;}
+
+    /* TESTIMONIALS */
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem;}
+    .testi-card{background:var(--white);padding:2rem;}
+    .stars{color:#efc42c;font-size:.85rem;margin-bottom:1rem;letter-spacing:.1em;}
+    .testi-txt{font-size:.875rem;color:var(--body);margin-bottom:1.5rem;line-height:1.7;letter-spacing:-.01em;}
+    .testi-author{display:flex;align-items:center;gap:.6rem;}
+    .avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:.75rem;flex-shrink:0;letter-spacing:0;}
+    .a1{background:#292929;}
+    .a2{background:#161616;}
+    .a3{background:#505050;}
+    .author-name{font-size:.82rem;font-weight:600;color:var(--dark);}
+    .author-loc{font-size:.7rem;color:var(--muted);}
+    .plat-row{display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .plat{font-size:.8rem;color:var(--body);display:flex;align-items:center;gap:.35rem;}
+    .plat strong{color:var(--dark);font-weight:700;}
+
+    /* FAQ */
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+    .faq-list{margin-top:2rem;border-top:1px solid var(--border);}
+    .faq-item{border-bottom:1px solid var(--border);}
+    .faq-q{padding:1rem 0;font-size:.9rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;letter-spacing:-.02em;user-select:none;}
+    .faq-q:hover{color:var(--accent);}
+    .faq-q::after{content:"+";font-size:1.1rem;color:var(--muted);flex-shrink:0;transition:transform .2s;}
+    .faq-item.open .faq-q::after{content:"−";}
+    .faq-a{display:none;padding:0 0 1rem;font-size:.85rem;color:var(--body);line-height:1.7;letter-spacing:-.01em;}
+    .faq-item.open .faq-a{display:block;}
+    .faq-cta-panel{background:var(--dark);padding:2.5rem;color:white;}
+    .faq-cta-over{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:1rem;}
+    .faq-cta-panel h3{font-size:1.4rem;font-weight:500;color:white;margin-bottom:.75rem;letter-spacing:-.04em;line-height:1.2;}
+    .faq-cta-panel p{font-size:.85rem;color:#aaa;margin-bottom:1.5rem;line-height:1.65;letter-spacing:-.01em;}
+    .btn-accent{background:var(--accent);color:white;padding:.7rem 1.4rem;font-size:.875rem;font-weight:600;letter-spacing:-.02em;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.3rem;transition:opacity .15s;width:100%;justify-content:center;}
+    .btn-accent:hover{opacity:.9;}
+    .faq-cta-note{font-size:.72rem;color:#555;margin-top:.75rem;text-align:center;letter-spacing:0;}
+
+    /* FOOT TRUST */
+    .foot-trust{background:var(--dark);padding:2.5rem 24px;}
+    .foot-trust-inner{max-width:1186px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:.5px;background:var(--mid);}
+    .ft{background:var(--dark);padding:1.5rem 1rem;text-align:center;}
+    .ft-icon{margin-bottom:.75rem;display:flex;justify-content:center;color:white;}
+    .ft-title{font-size:.75rem;font-weight:600;color:white;margin-bottom:.15rem;letter-spacing:-.01em;}
+    .ft-sub{font-size:.65rem;color:#555;}
+
+    /* FOOTER */
+    footer{background:#0a0a0a;padding:3rem 24px 2rem;}
+    .foot-inner{max-width:1186px;margin:0 auto;}
+    .foot-top{display:flex;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:2rem;}
+    .foot-brand{}
+    .foot-logo{font-size:1.1rem;font-weight:700;color:white;margin-bottom:.4rem;letter-spacing:-.04em;}
+    .foot-tag{font-size:.78rem;color:#444;max-width:240px;line-height:1.6;letter-spacing:-.01em;}
+    .foot-col h4{font-size:.72rem;font-weight:700;color:#444;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;}
+    .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+    .foot-col a{font-size:.8rem;color:#555;transition:color .15s;letter-spacing:-.01em;}
+    .foot-col a:hover{color:white;}
+    .foot-bot{border-top:1px solid #1a1a1a;padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:#444;flex-wrap:wrap;gap:1rem;letter-spacing:0;}
+    .foot-bot-links{display:flex;gap:1.5rem;}
+    .foot-bot-links a{color:#444;transition:color .15s;}
+    .foot-bot-links a:hover{color:white;}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .tiers{grid-template-columns:1fr;}
+      .steps{grid-template-columns:repeat(2,1fr);}
+      .foot-trust-inner{grid-template-columns:repeat(3,1fr);}
+    }
+    @media(max-width:768px){
+      .hero-wrap{grid-template-columns:1fr;padding:60px 24px;}
+      .laptop-outer{display:none;}
+      .hero-wrap h1{font-size:2rem;}
+      .steps{grid-template-columns:1fr;}
+      .cmp-grid,.faq-grid{grid-template-columns:1fr;}
+      .testi-grid{grid-template-columns:1fr;}
+      .foot-trust-inner{grid-template-columns:repeat(2,1fr);}
+      nav .nav-links{display:none;}
+      .section{padding:80px 24px;}
+    }
+  </style>
+
+<style>
+  /* Reset Webflow's own styles within our wrapper */
+  #jp-root *{box-sizing:border-box;}
+  #jp-root ul{list-style:none;padding:0;margin:0;}
+  #jp-root a{color:inherit;text-decoration:none;}
+</style>
+
+<div id="jp-root">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Jobpeak</a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How it Works</a></li>
+      <li><a href="#rates">Rates by Tier</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/login" class="btn-ghost">Login</a>
+      <a href="/specialties" class="btn-dark">Take Free Practice Test &rarr;</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div>
+    <div class="hero-tag">Now accepting applications</div>
+    <h1>Get Qualified for<br>Remote <em>AI Work</em></h1>
+    <p class="hero-sub">No résumé. No interviews. Just prove your skills.</p>
+    <ul class="hero-bullets">
+      <li>Work on real AI projects</li>
+      <li>Get paid in USD</li>
+      <li>Flexible schedule</li>
+      <li>Skills-based qualification</li>
+      <li>Work from anywhere</li>
+    </ul>
+    <div class="hero-ctas">
+      <a href="/specialties" class="btn-dark">Take Free Practice Test &rarr;</a>
+      <a href="/specialties" class="btn-outline-dark">See Sample Questions</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><strong>Secure Payments</strong> · Powered by Stripe</div>
+      <div class="trust-item"><strong>Global Payouts</strong> · via PayPal</div>
+    </div>
+  </div>
+
+  <!-- Laptop Mockup -->
+  <div class="laptop-outer">
+    <div class="laptop-frame">
+      <div class="laptop-bar"></div>
+      <div class="laptop-screen">
+        <div class="db-side">
+          <div class="db-logo-sm">Jobpeak</div>
+          <div class="db-item on">Dashboard</div>
+          <div class="db-item">Projects</div>
+          <div class="db-item">Earnings</div>
+          <div class="db-item">Payments</div>
+          <div class="db-item">Profile</div>
+          <div class="db-item">Support</div>
+          <div class="db-item" style="color:#fe566b;margin-top:8px;">Logout</div>
+        </div>
+        <div class="db-main">
+          <div class="db-hi">Welcome back, Alex.</div>
+          <div class="db-sub-sm">Here's your progress and next steps</div>
+          <div class="db-cards">
+            <div class="db-card"><div class="db-card-lbl">Qualification Score</div><div class="db-card-val g">85%</div><div class="db-card-note">Great Job!</div></div>
+            <div class="db-card"><div class="db-card-lbl">Projects Completed</div><div class="db-card-val">24</div><div class="db-card-note">This month</div></div>
+            <div class="db-card"><div class="db-card-lbl">Total Earnings</div><div class="db-card-val">$1,240</div><div class="db-card-note">This month</div></div>
+          </div>
+          <div class="db-sec-lbl">Available Projects</div>
+          <div class="db-row"><div style="display:flex;align-items:center;"><div class="db-dot"></div><div class="db-row-name">AI Response Evaluation</div></div><div class="db-row-rate">$30/hr</div></div>
+          <div class="db-row"><div style="display:flex;align-items:center;"><div class="db-dot"></div><div class="db-row-name">Math Problem Evaluation</div></div><div class="db-row-rate">$40/hr</div></div>
+          <div class="db-row"><div style="display:flex;align-items:center;"><div class="db-dot"></div><div class="db-row-name">Finance Report Review</div></div><div class="db-row-rate">$50/hr</div></div>
+          <div class="db-row"><div style="display:flex;align-items:center;"><div class="db-dot" style="background:var(--accent);"></div><div class="db-row-name">Code Review &amp; Debugging</div></div><div class="db-row-rate">$100/hr</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="laptop-base"></div>
+    <div class="laptop-foot"></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section alt" id="how-it-works">
+  <div class="inner">
+    <div class="overline center">Simple Process</div>
+    <h2 class="sec-title center">How <em>Jobpeak</em> Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">
+          <div class="step-badge">1</div>
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#9a68f8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+        </div>
+        <h3>Practice Free</h3>
+        <p>Take a free practice test with 15 sample questions.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">
+          <div class="step-badge">2</div>
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#9a68f8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+        </div>
+        <h3>Get Your Score</h3>
+        <p>See your score and discover your strongest areas.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">
+          <div class="step-badge">3</div>
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#9a68f8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+        </div>
+        <h3>Take Cognition Test</h3>
+        <p>Pass the paid Cognition Test to get qualified.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">
+          <div class="step-badge">4</div>
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#9a68f8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <h3>Unlock AI Work</h3>
+        <p>Access real projects and start earning in USD.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAREER PATH -->
+<div class="section" id="rates">
+  <div class="inner">
+    <div class="overline center">Earnings</div>
+    <h2 class="sec-title center">Choose Your <em>AI Career Path</em></h2>
+    <p class="sec-sub center">Pay scales with the difficulty of the work and the rigour of the qualification. Rates published up front.</p>
+    <div class="tiers">
+
+      <!-- AI Generalist -->
+      <div class="tier-card">
+        <img class="tier-img" src="images/generalist.jpg" alt="AI Generalist — woman reviewing AI responses on laptop">
+        <div class="tier-body">
+          <div class="tier-tag">Basic</div>
+          <div class="tier-name">AI Generalist</div>
+          <div class="tier-desc">Review AI responses &amp; improve AI models</div>
+          <span class="tier-badge">Beginner Friendly</span>
+          <div class="tier-section-lbl">Best For</div>
+          <ul class="tier-best">
+            <li>Students</li>
+            <li>Fresh Graduates</li>
+            <li>Career Switchers</li>
+            <li>Freelancers</li>
+          </ul>
+          <div class="tier-section-lbl">What you'll do</div>
+          <ul class="tier-feats">
+            <li>Review AI responses</li>
+            <li>Data annotation</li>
+            <li>Content classification</li>
+            <li>Prompt evaluation</li>
+          </ul>
+          <div class="tier-meta">
+            <div class="tier-earn"><div class="tier-earn-lbl">Earn up to</div><div class="tier-earn-val">$30/hr</div></div>
+            <div class="tier-time"><div class="tier-time-lbl">Test Time</div><div class="tier-time-val">15 mins</div></div>
+          </div>
+          <div class="tier-foot">🖥 Remote &nbsp; 🌐 Worldwide &nbsp; 🕐 Flexible Hours</div>
+          <a href="/specialties" class="tier-cta">Take Practice Test</a>
+        </div>
+      </div>
+
+      <!-- STEM AI Trainer -->
+      <div class="tier-card">
+        <img class="tier-img" src="images/stem.jpg" alt="STEM AI Trainer — student with math equations">
+        <div class="tier-body">
+          <div class="tier-tag">STEM</div>
+          <div class="tier-name">STEM AI Trainer</div>
+          <div class="tier-desc">Work on Math, Science &amp; STEM AI projects</div>
+          <span class="tier-badge">Intermediate</span>
+          <div class="tier-section-lbl">Best For</div>
+          <ul class="tier-best">
+            <li>STEM Students</li>
+            <li>Graduates</li>
+            <li>Subject Matter Experts</li>
+          </ul>
+          <div class="tier-section-lbl">What you'll do</div>
+          <ul class="tier-feats">
+            <li>Solve &amp; verify STEM problems</li>
+            <li>Check AI answers</li>
+            <li>Improve explanations</li>
+            <li>Data labeling &amp; more</li>
+          </ul>
+          <div class="tier-meta">
+            <div class="tier-earn"><div class="tier-earn-lbl">Earn up to</div><div class="tier-earn-val">$40/hr</div></div>
+            <div class="tier-time"><div class="tier-time-lbl">Test Time</div><div class="tier-time-val">20 mins</div></div>
+          </div>
+          <div class="tier-foot">🖥 Remote &nbsp; 🌐 Worldwide &nbsp; 🕐 Flexible Hours</div>
+          <a href="/specialties" class="tier-cta">Take Practice Test</a>
+        </div>
+      </div>
+
+      <!-- Coding AI Trainer -->
+      <div class="tier-card">
+        <img class="tier-img" src="images/coding.jpg" alt="Coding AI Trainer — developer reviewing code">
+        <div class="tier-body">
+          <div class="tier-tag">Coding</div>
+          <div class="tier-name">Coding AI Trainer</div>
+          <div class="tier-desc">Evaluate code &amp; improve AI coding models</div>
+          <span class="tier-badge">Advanced</span>
+          <div class="tier-section-lbl">Best For</div>
+          <ul class="tier-best">
+            <li>Developers</li>
+            <li>Programmers</li>
+            <li>CS Students</li>
+          </ul>
+          <div class="tier-section-lbl">What you'll do</div>
+          <ul class="tier-feats">
+            <li>Code review &amp; evaluation</li>
+            <li>Bug detection</li>
+            <li>Test case generation</li>
+            <li>Code improvement</li>
+          </ul>
+          <div class="tier-meta">
+            <div class="tier-earn"><div class="tier-earn-lbl">Earn up to</div><div class="tier-earn-val">$50/hr</div></div>
+            <div class="tier-time"><div class="tier-time-lbl">Test Time</div><div class="tier-time-val">20 mins</div></div>
+          </div>
+          <div class="tier-foot">🖥 Remote &nbsp; 🌐 Worldwide &nbsp; 🕐 Flexible Hours</div>
+          <a href="/specialties" class="tier-cta">Take Practice Test</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<div class="section alt">
+  <div class="inner">
+    <div class="cmp-grid">
+      <div class="cmp-table">
+        <div class="cmp-head"><div>Feature</div><div>Traditional Jobs</div><div class="jp">Jobpeak</div></div>
+        <div class="cmp-row"><div class="feat">Application process</div><div><span class="cx">✗</span> Résumé required</div><div><span class="ck">✓</span> Skills only</div></div>
+        <div class="cmp-row"><div class="feat">Interview rounds</div><div><span class="cx">✗</span> Multiple rounds</div><div><span class="ck">✓</span> One-time test</div></div>
+        <div class="cmp-row"><div class="feat">Qualification time</div><div><span class="cx">✗</span> Weeks to hear back</div><div><span class="ck">✓</span> Instant path</div></div>
+        <div class="cmp-row"><div class="feat">Location</div><div><span class="cx">✗</span> Office bound</div><div><span class="ck">✓</span> Work anywhere</div></div>
+        <div class="cmp-row"><div class="feat">Pay transparency</div><div><span class="cx">✗</span> Salary negotiation</div><div><span class="ck">✓</span> Transparent rates</div></div>
+        <div class="cmp-row"><div class="feat">Opportunities</div><div><span class="cx">✗</span> Limited scope</div><div><span class="ck">✓</span> Global AI work</div></div>
+      </div>
+      <div class="cmp-right">
+        <div class="overline">A better way</div>
+        <h2 class="sec-title" style="margin-bottom:1rem;">Work on your<br><em>own terms</em></h2>
+        <p>Join qualified contributors earning from real AI projects — no chasing clients, no salary negotiation, no location constraints.</p>
+        <div class="earnings-mock">
+          <div class="earnings-top">
+            <div class="earnings-lbl">TOTAL EARNINGS</div>
+            <div class="earnings-val">$1,240.00</div>
+          </div>
+          <div class="earnings-body">
+            <div class="earnings-sec">RECENT PAYOUTS</div>
+            <div class="earnings-row"><span style="color:var(--body)">AI Response Evaluation</span><span class="earn-pos">+$120</span></div>
+            <div class="earnings-row"><span style="color:var(--body)">Math Problem Review</span><span class="earn-pos">+$240</span></div>
+            <div class="earnings-row"><span style="color:var(--body)">Code Review Task</span><span class="earn-pos">+$880</span></div>
+            <div class="earnings-note">See how Jobpeak works inside your dashboard</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section" id="testimonials">
+  <div class="inner">
+    <div class="overline center">Reviews</div>
+    <h2 class="sec-title center" style="margin-bottom:3rem;">Loved by <em>AI Contributors</em> Worldwide</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">"Jobpeak changed the way I work. I love the flexibility and the transparent pay. The process was simple and straightforward."</p>
+        <div class="testi-author"><div class="avatar a1">SM</div><div><div class="author-name">Sarah M.</div><div class="author-loc">Texas, USA</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">"I was able to qualify for the STEM tier and now I work on math evaluation projects. Great platform for people who love AI!"</p>
+        <div class="testi-author"><div class="avatar a2">DK</div><div><div class="author-name">Daniel K.</div><div class="author-loc">California, USA</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">"As a freelancer, I finally have consistent work without chasing clients. The payouts are reliable and on time."</p>
+        <div class="testi-author"><div class="avatar a3">MR</div><div><div class="author-name">Michelle R.</div><div class="author-loc">Florida, USA</div></div></div>
+      </div>
+    </div>
+    <div class="plat-row">
+      <div class="plat">⭐ <strong>4.8/5</strong>&nbsp;from 2,500+ contributors</div>
+      <div class="plat">Trustpilot</div>
+      <div class="plat">Sitejabber</div>
+      <div class="plat">Google ★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section alt">
+  <div class="inner">
+    <div class="faq-grid">
+      <div>
+        <div class="overline">FAQ</div>
+        <h2 class="sec-title">Frequently Asked<br>Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item open">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why is the Cognition Test paid?</div>
+            <div class="faq-a">The Cognition Test requires significant infrastructure to administer fairly — question banks across multiple domains, automated marking, and identity verification. The fee covers these operational costs and signals genuine intent from applicants.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do payments work?</div>
+            <div class="faq-a">Payments are made bi-weekly in USD via Stripe or PayPal. You'll receive a full breakdown of completed tasks and earnings in your dashboard before each payout.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need coding skills to join?</div>
+            <div class="faq-a">No — coding is just one of four tiers. Basic covers generalist work, STEM covers sciences, and Professional covers finance and accounting. Choose the tier that matches your skills.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens if I don't pass the test?</div>
+            <div class="faq-a">You can retake the free practice test anytime. If you don't pass the Cognition Test, you'll receive detailed feedback and can reapply after a 30-day period.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does the qualification last?</div>
+            <div class="faq-a">Your qualification is valid for 12 months from the date you pass. A short re-qualification is required annually to confirm your skills remain current.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">When can I start working?</div>
+            <div class="faq-a">Once you pass the Cognition Test you gain access to your contributor dashboard where available projects are listed by tier. You can start applying immediately after qualification.</div>
+          </div>
+        </div>
+      </div>
+      <div class="faq-cta-panel">
+        <div class="faq-cta-over">Ready to get started?</div>
+        <h3>Take the First Step Toward Your AI Career</h3>
+        <p>Start with the free practice test and discover where your skills can take you.</p>
+        <a href="/specialties" class="btn-accent">Take Free Practice Test &rarr;</a>
+        <div class="faq-cta-note">No payment · No commitment · Takes 5 minutes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="foot-trust">
+  <div class="foot-trust-inner">
+    <div class="ft"><div class="ft-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg></div><div class="ft-title">No CV Required</div><div class="ft-sub">Skills over resume</div></div>
+    <div class="ft"><div class="ft-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="18" y1="8" x2="22" y2="12"/><line x1="22" y1="8" x2="18" y2="12"/></svg></div><div class="ft-title">No Interviews</div><div class="ft-sub">Just one test</div></div>
+    <div class="ft"><div class="ft-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="18"/><path d="M15.5 9.5C14.8 8.6 13.5 8 12 8c-2 0-3.5 1.1-3.5 2.5S10 13 12 13s3.5 1.1 3.5 2.5S13.7 18 12 18c-1.5 0-2.8-.6-3.5-1.5"/></svg></div><div class="ft-title">USD Payments</div><div class="ft-sub">Bi-weekly payouts</div></div>
+    <div class="ft"><div class="ft-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="ft-title">Remote First</div><div class="ft-sub">Work from anywhere</div></div>
+    <div class="ft"><div class="ft-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div class="ft-title">Grow Your Skills</div><div class="ft-sub">Level up &amp; earn more</div></div>
+    <div class="ft"><div class="ft-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="ft-title">Secure &amp; Trusted</div><div class="ft-sub">Your data is safe</div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="foot-logo">Jobpeak</div>
+        <p class="foot-tag">Qualifying independent subcontractors for paid AI support work. One test, no CV, no interview.</p>
+      </div>
+      <div class="foot-col"><h4>Platform</h4><ul><li><a href="/">Home</a></li><li><a href="/specialties">Specialties</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="foot-col"><h4>Support</h4><ul><li><a href="mailto:support@jobpeak.com">support@jobpeak.com</a></li><li><a href="mailto:hello@jobpeak.com">hello@jobpeak.com</a></li><li><a href="/login">Subcontractor Login</a></li></ul></div>
+      <div class="foot-col"><h4>Legal</h4><ul><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms of Service</a></li><li><a href="/gdpr">GDPR</a></li></ul></div>
+    </div>
+    <div class="foot-bot">
+      <div>Copyright &copy; Jobpeak 2026. Operated by Galco FZ-LLC.</div>
+      <div class="foot-bot-links"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/gdpr">GDPR</a></div>
+    </div>
+  </div>
+</footer>
+
+</div>
