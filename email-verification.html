@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verify Your Email — Jobpeak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#9a68f8;--dark:#161616;--body:#505050;--muted:#ababab;--border:#e3e3e3;--bg:#f3f3f3;--accent-light:#f0eaff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
+nav{position:fixed;top:0;left:0;right:0;padding:1.25rem 2rem;background:#fff;border-bottom:1px solid var(--border);}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:-.5px;color:var(--dark);text-decoration:none;}
+.card{background:#fff;border:1px solid var(--border);padding:3rem 2.5rem;width:100%;max-width:420px;text-align:center;margin-top:5rem;}
+.icon-wrap{position:relative;width:80px;height:80px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;color:var(--accent);}
+.check-badge{position:absolute;bottom:-8px;right:-8px;width:26px;height:26px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;}
+h1{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.75rem;}
+p{color:var(--body);font-size:.9rem;line-height:1.65;margin-bottom:.75rem;}
+.email-addr{font-weight:700;color:var(--dark);}
+.note{font-size:.82rem;color:var(--muted);margin-bottom:2rem;line-height:1.6;}
+.resend{display:inline-block;color:var(--accent);font-size:.9rem;font-weight:700;text-decoration:none;cursor:pointer;margin-bottom:2rem;}
+.resend:hover{text-decoration:underline;}
+.divider{height:1px;background:var(--border);margin:0 0 1.25rem;}
+.back{font-size:.82rem;color:var(--body);}
+.back a{color:var(--accent);font-weight:700;text-decoration:none;}
+</style>
+</head>
+<body>
+<nav><a href="/" class="logo">Jobpeak</a></nav>
+<div class="card">
+  <div class="icon-wrap">
+    <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
+    <div class="check-badge">
+      <svg width="12" height="12" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+  </div>
+  <h1>Verify Your Email</h1>
+  <p>We've sent a verification link to<br><span class="email-addr">john.doe@example.com</span></p>
+  <p class="note">Please check your inbox and click on the link to verify your account. The link expires in 24 hours.</p>
+  <a class="resend" href="#">Resend Email</a>
+  <div class="divider"></div>
+  <p class="back">Wrong email? <a href="/signup">Go back</a></p>
+</div>
+</body>
+</html>
