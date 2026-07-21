@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projects — Jobpeak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#9a68f8;--dark:#161616;--body:#505050;--muted:#ababab;--border:#e3e3e3;--bg:#f3f3f3;--accent-light:#f0eaff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;display:flex;}
+aside{width:220px;min-height:100vh;background:var(--dark);color:#fff;display:flex;flex-direction:column;flex-shrink:0;position:fixed;top:0;left:0;bottom:0;}
+.sidebar-logo{padding:1.5rem 1.5rem 1rem;font-size:1.15rem;font-weight:800;letter-spacing:-.5px;border-bottom:1px solid rgba(255,255,255,.1);}
+nav{flex:1;padding:1rem 0;}
+.nav-item{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.5rem;font-size:.88rem;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;text-decoration:none;transition:background .15s,color .15s;}
+.nav-item:hover,.nav-item.active{background:rgba(255,255,255,.07);color:#fff;}
+.nav-item.active{border-left:3px solid var(--accent);}
+.nav-item svg{flex-shrink:0;}
+.sidebar-bottom{padding:1rem 1.5rem;border-top:1px solid rgba(255,255,255,.1);}
+.logout{display:flex;align-items:center;gap:.75rem;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;text-decoration:none;}
+.logout:hover{color:#fff;}
+main{margin-left:220px;flex:1;padding:2rem 2.5rem;}
+.top-row{display:grid;grid-template-columns:1fr 280px;gap:1.5rem;margin-bottom:2rem;}
+.section-title{font-size:1.2rem;font-weight:800;letter-spacing:-.4px;margin-bottom:1.25rem;}
+.project-card{background:#fff;border:1px solid var(--border);padding:1.1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.75rem;}
+.project-info{}
+.project-name{font-size:.92rem;font-weight:700;margin-bottom:.2rem;}
+.project-tag{font-size:.72rem;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.project-meta{display:flex;align-items:center;gap:1.5rem;flex-shrink:0;}
+.project-rate{font-size:1.1rem;font-weight:800;color:var(--dark);}
+.project-diff{font-size:.75rem;color:var(--muted);font-weight:600;}
+.btn{display:inline-block;background:var(--dark);color:#fff;font-family:'Inter Tight',sans-serif;font-size:.82rem;font-weight:700;padding:.6rem 1.25rem;border:none;cursor:pointer;text-align:center;text-decoration:none;white-space:nowrap;}
+.btn:hover{opacity:.85;}
+.earnings-panel{background:#fff;border:1px solid var(--border);padding:1.5rem;}
+.earnings-panel h2{font-size:.9rem;font-weight:800;margin-bottom:1.25rem;}
+.earn-row{display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);font-size:.85rem;}
+.earn-row:last-child{border-bottom:none;}
+.earn-label{color:var(--muted);font-weight:600;}
+.earn-big{font-size:1.6rem;font-weight:800;color:var(--dark);margin:1rem 0 .25rem;}
+.earn-sub{font-size:.75rem;color:var(--muted);}
+.earn-val{font-weight:800;color:var(--dark);}
+.payout-btn{display:block;background:var(--dark);color:#fff;font-family:'Inter Tight',sans-serif;font-size:.82rem;font-weight:700;padding:.7rem 1rem;border:none;cursor:pointer;text-align:center;text-decoration:none;width:100%;margin-top:1.25rem;}
+</style>
+</head>
+<body>
+<aside>
+  <div class="sidebar-logo">Jobpeak</div>
+  <nav>
+    <a href="/dashboard" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </a>
+    <a href="/practice-test" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+      Tests
+    </a>
+    <a href="/projects" class="nav-item active">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      Projects
+    </a>
+    <a href="#" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      Earnings
+    </a>
+    <a href="#" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+      Payments
+    </a>
+    <a href="#" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Profile
+    </a>
+    <a href="#" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      Support
+    </a>
+  </nav>
+  <div class="sidebar-bottom">
+    <a href="/" class="logout">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Logout
+    </a>
+  </div>
+</aside>
+<main>
+  <div class="top-row">
+    <div>
+      <div class="section-title">Available Projects</div>
+      <div class="project-card">
+        <div class="project-info">
+          <div class="project-name">AI Response Evaluation</div>
+          <div class="project-tag">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Easy
+          </div>
+        </div>
+        <div class="project-meta">
+          <div>
+            <div class="project-rate">$30/hr</div>
+            <div class="project-diff">Basic Tier</div>
+          </div>
+          <a href="#" class="btn">Start Project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-info">
+          <div class="project-name">Content Classification</div>
+          <div class="project-tag">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Easy
+          </div>
+        </div>
+        <div class="project-meta">
+          <div>
+            <div class="project-rate">$25/hr</div>
+            <div class="project-diff">Basic Tier</div>
+          </div>
+          <a href="#" class="btn">Start Project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-info">
+          <div class="project-name">Data Annotation</div>
+          <div class="project-tag">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Easy
+          </div>
+        </div>
+        <div class="project-meta">
+          <div>
+            <div class="project-rate">$28/hr</div>
+            <div class="project-diff">Basic Tier</div>
+          </div>
+          <a href="#" class="btn">Start Project</a>
+        </div>
+      </div>
+    </div>
+    <div class="earnings-panel">
+      <h2>Earnings Overview</h2>
+      <div class="earn-big">$240.00</div>
+      <div class="earn-sub">Total Earnings</div>
+      <div style="height:1rem;"></div>
+      <div class="earn-row">
+        <span class="earn-label">This Month</span>
+        <span class="earn-val">$120.00</span>
+      </div>
+      <div class="earn-row">
+        <span class="earn-label">Last Payout</span>
+        <span class="earn-val">$120.00</span>
+      </div>
+      <div class="earn-row">
+        <span class="earn-label">Payout Date</span>
+        <span class="earn-val">May 1, 2025</span>
+      </div>
+      <a href="#" class="payout-btn">Request Payout</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>
