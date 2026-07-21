@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Practice Test — Jobpeak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#9a68f8;--dark:#161616;--body:#505050;--muted:#ababab;--border:#e3e3e3;--bg:#f3f3f3;--accent-light:#f0eaff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;}
+header{background:#fff;border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:-.5px;color:var(--dark);text-decoration:none;}
+.timer{font-size:.9rem;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:.4rem;}
+.progress-wrap{height:4px;background:var(--border);}
+.progress-fill{height:4px;background:var(--accent);width:46.6%;}
+main{display:flex;align-items:flex-start;justify-content:center;padding:3rem 1.5rem;}
+.card{background:#fff;border:1px solid var(--border);padding:2.5rem;width:100%;max-width:640px;}
+.q-meta{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem;font-weight:600;}
+.q-meta strong{color:var(--dark);}
+h2{font-size:1.2rem;font-weight:700;line-height:1.55;margin-bottom:2rem;letter-spacing:-.3px;}
+.options{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2.5rem;}
+.option{border:1px solid var(--border);padding:1rem 1.25rem;cursor:pointer;display:flex;gap:1rem;align-items:flex-start;font-size:.92rem;line-height:1.55;color:var(--body);transition:border-color .15s,background .15s;}
+.option:hover{border-color:var(--accent);background:var(--accent-light);}
+.option.selected{border-color:var(--accent);background:var(--accent-light);}
+.option-label{font-weight:800;color:var(--accent);min-width:1.25rem;font-size:.88rem;}
+.nav-btns{display:flex;justify-content:space-between;gap:1rem;}
+.btn-outline{background:#fff;border:1px solid var(--border);color:var(--dark);font-family:'Inter Tight',sans-serif;font-size:.88rem;font-weight:600;padding:.8rem 1.75rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;}
+.btn-primary{background:var(--accent);border:none;color:#fff;font-family:'Inter Tight',sans-serif;font-size:.88rem;font-weight:700;padding:.8rem 1.75rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;}
+.btn-primary:hover,.btn-outline:hover{opacity:.85;}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="logo">Jobpeak</a>
+  <div class="timer">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    02:15
+  </div>
+</header>
+<div class="progress-wrap"><div class="progress-fill"></div></div>
+<main>
+  <div class="card">
+    <div class="q-meta">
+      <span>Question <strong>7</strong> of 15</span>
+      <span>Practice Test</span>
+    </div>
+    <h2>Which of the following AI responses is more helpful to a user asking about productivity tools?</h2>
+    <div class="options">
+      <div class="option" onclick="pickOption(this)">
+        <span class="option-label">A</span>
+        <span>AI helps in many ways by automating tasks and making things easier for everyone involved in the process.</span>
+      </div>
+      <div class="option selected" onclick="pickOption(this)">
+        <span class="option-label">B</span>
+        <span>AI improves efficiency by automating repetitive tasks, reducing errors, and enabling data-driven insights that help organizations make smarter, faster decisions.</span>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <a href="/practice-test" class="btn-outline">&#8592; Previous</a>
+      <a href="/practice-test-results" class="btn-primary">Next &#8594;</a>
+    </div>
+  </div>
+</main>
+<script>
+function pickOption(el){document.querySelectorAll('.option').forEach(function(o){o.classList.remove('selected');});el.classList.add('selected');}
+</script>
+</body>
+</html>
