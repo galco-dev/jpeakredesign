@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qualification Result — Jobpeak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#9a68f8;--dark:#161616;--body:#505050;--muted:#ababab;--border:#e3e3e3;--bg:#f3f3f3;--accent-light:#f0eaff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
+nav{position:fixed;top:0;left:0;right:0;padding:1.25rem 2rem;background:#fff;border-bottom:1px solid var(--border);}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:-.5px;color:var(--dark);text-decoration:none;}
+.card{background:#fff;border:1px solid var(--border);padding:3rem 2.5rem 2.5rem;width:100%;max-width:460px;text-align:center;margin-top:5rem;}
+.trophy{width:80px;height:80px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin:0 auto 1.75rem;border-radius:50%;}
+h1{font-size:1.75rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.35rem;}
+.sub{color:var(--body);font-size:.9rem;margin-bottom:2rem;}
+.result-box{border:1px solid var(--border);padding:1.5rem;margin-bottom:1.75rem;display:flex;justify-content:space-around;align-items:center;}
+.result-divider{width:1px;height:48px;background:var(--border);}
+.result-key{font-size:.7rem;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem;}
+.result-val{font-size:1.2rem;font-weight:800;color:var(--dark);}
+.desc{font-size:.85rem;color:var(--body);line-height:1.65;margin-bottom:2rem;}
+.btn{display:block;background:var(--dark);color:#fff;font-family:'Inter Tight',sans-serif;font-size:.95rem;font-weight:700;padding:1rem;border:none;cursor:pointer;width:100%;text-align:center;text-decoration:none;}
+.btn:hover{opacity:.85;}
+</style>
+</head>
+<body>
+<nav><a href="/" class="logo">Jobpeak</a></nav>
+<div class="card">
+  <div class="trophy">
+    <svg width="38" height="38" fill="none" stroke="var(--accent)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 0 0 5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 1 0 5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+  </div>
+  <h1>Congratulations!</h1>
+  <p class="sub">You Passed the Cognition Test</p>
+  <div class="result-box">
+    <div>
+      <div class="result-key">Your Qualification Tier</div>
+      <div class="result-val">BASIC</div>
+    </div>
+    <div class="result-divider"></div>
+    <div>
+      <div class="result-key">Hourly Rate</div>
+      <div class="result-val">Up to $30/hr</div>
+    </div>
+  </div>
+  <p class="desc">You are now eligible for AI projects. Explore available projects and start earning today.</p>
+  <a href="/projects" class="btn">Explore Projects</a>
+</div>
+</body>
+</html>
