@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cognition Test — Jobpeak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#9a68f8;--dark:#161616;--body:#505050;--muted:#ababab;--border:#e3e3e3;--bg:#f3f3f3;--accent-light:#f0eaff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
+nav{position:fixed;top:0;left:0;right:0;padding:1.25rem 2rem;background:#fff;border-bottom:1px solid var(--border);}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:-.5px;color:var(--dark);text-decoration:none;}
+.card{background:#fff;border:1px solid var(--border);padding:3rem 3rem 2.5rem;width:100%;max-width:520px;text-align:center;margin-top:5rem;}
+.tag{display:inline-block;background:var(--dark);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;margin-bottom:1.5rem;}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem;}
+.sub{color:var(--body);font-size:.9rem;margin-bottom:2.5rem;}
+.stats{display:flex;gap:0;margin-bottom:2.5rem;border:1px solid var(--border);}
+.stat{display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.8rem;color:var(--body);flex:1;padding:1.25rem .75rem;}
+.stat+.stat{border-left:1px solid var(--border);}
+.stat-icon{width:40px;height:40px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--dark);}
+.stat-val{font-size:1rem;font-weight:800;color:var(--dark);}
+.warning{background:var(--bg);border:1px solid var(--border);padding:1rem 1.25rem;font-size:.82rem;color:var(--body);line-height:1.6;text-align:left;margin-bottom:2rem;display:flex;gap:.75rem;align-items:flex-start;}
+.warning svg{flex-shrink:0;color:var(--muted);margin-top:.1rem;}
+.btn{display:block;background:var(--dark);color:#fff;font-family:'Inter Tight',sans-serif;font-size:1rem;font-weight:700;padding:1rem;border:none;cursor:pointer;width:100%;text-align:center;text-decoration:none;}
+.btn:hover{opacity:.85;}
+</style>
+</head>
+<body>
+<nav><a href="/" class="logo">Jobpeak</a></nav>
+<div class="card">
+  <div class="tag">Official Qualification Test</div>
+  <h1>Cognition Test</h1>
+  <p class="sub">This is the official qualification test. Complete it to get qualified for paid AI work.</p>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-icon">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+      </div>
+      <div class="stat-val">50</div>
+      Questions
+    </div>
+    <div class="stat">
+      <div class="stat-icon">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="stat-val">60 min</div>
+      Time Limit
+    </div>
+    <div class="stat">
+      <div class="stat-icon">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="stat-val">Official</div>
+      Certified
+    </div>
+    <div class="stat">
+      <div class="stat-icon">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+      </div>
+      <div class="stat-val">Qualify</div>
+      Get Paid
+    </div>
+  </div>
+  <div class="warning">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+    This is a one-time test. Once started, you must complete it in 60 minutes. Make sure you are in a quiet environment with a stable internet connection.
+  </div>
+  <a href="/cognition-test-questions" class="btn">Start Cognition Test</a>
+</div>
+</body>
+</html>
