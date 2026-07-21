@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard — Jobpeak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#9a68f8;--dark:#161616;--body:#505050;--muted:#ababab;--border:#e3e3e3;--bg:#f3f3f3;--accent-light:#f0eaff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;display:flex;}
+aside{width:220px;min-height:100vh;background:var(--dark);color:#fff;display:flex;flex-direction:column;flex-shrink:0;position:fixed;top:0;left:0;bottom:0;}
+.sidebar-logo{padding:1.5rem 1.5rem 1rem;font-size:1.15rem;font-weight:800;letter-spacing:-.5px;border-bottom:1px solid rgba(255,255,255,.1);}
+nav{flex:1;padding:1rem 0;}
+.nav-item{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.5rem;font-size:.88rem;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;text-decoration:none;transition:background .15s,color .15s;}
+.nav-item:hover,.nav-item.active{background:rgba(255,255,255,.07);color:#fff;}
+.nav-item.active{border-left:3px solid var(--accent);}
+.nav-item svg{flex-shrink:0;}
+.sidebar-bottom{padding:1rem 1.5rem;border-top:1px solid rgba(255,255,255,.1);}
+.logout{display:flex;align-items:center;gap:.75rem;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;text-decoration:none;}
+.logout:hover{color:#fff;}
+main{margin-left:220px;flex:1;padding:2rem 2.5rem;}
+.page-header{margin-bottom:2rem;}
+.page-header h1{font-size:1.5rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.25rem;}
+.page-header p{color:var(--muted);font-size:.88rem;}
+.progress-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;}
+.prog-card{background:#fff;border:1px solid var(--border);padding:1.25rem;}
+.prog-label{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+.prog-val{font-size:1.5rem;font-weight:800;color:var(--dark);margin-bottom:.25rem;}
+.prog-status{font-size:.78rem;font-weight:600;}
+.prog-status.done{color:#161616;}
+.prog-status.pending{color:var(--muted);}
+.row-2{display:grid;grid-template-columns:1fr 320px;gap:1.5rem;}
+.next-step{background:#fff;border:1px solid var(--border);padding:1.5rem;}
+.next-step h2{font-size:1rem;font-weight:800;margin-bottom:.35rem;letter-spacing:-.3px;}
+.next-step p{font-size:.85rem;color:var(--body);line-height:1.6;margin-bottom:1.25rem;}
+.btn{display:inline-block;background:var(--dark);color:#fff;font-family:'Inter Tight',sans-serif;font-size:.85rem;font-weight:700;padding:.75rem 1.5rem;border:none;cursor:pointer;text-align:center;text-decoration:none;}
+.btn:hover{opacity:.85;}
+.earnings-card{background:#fff;border:1px solid var(--border);padding:1.5rem;}
+.earnings-card h2{font-size:.9rem;font-weight:800;letter-spacing:-.2px;margin-bottom:1.25rem;}
+.tier-row{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.82rem;}
+.tier-row:last-child{border-bottom:none;}
+.tier-dot{width:10px;height:10px;background:var(--dark);display:inline-block;margin-right:.5rem;flex-shrink:0;}
+.tier-name{color:var(--body);font-weight:600;display:flex;align-items:center;}
+.tier-rate{font-weight:800;color:var(--dark);}
+</style>
+</head>
+<body>
+<aside>
+  <div class="sidebar-logo">Jobpeak</div>
+  <nav>
+    <a href="/dashboard" class="nav-item active">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </a>
+    <a href="/practice-test" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+      Tests
+    </a>
+    <a href="/projects" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      Projects
+    </a>
+    <a href="#" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      Earnings
+    </a>
+    <a href="#" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+      Payments
+    </a>
+    <a href="#" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Profile
+    </a>
+    <a href="#" class="nav-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      Support
+    </a>
+  </nav>
+  <div class="sidebar-bottom">
+    <a href="/" class="logout">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Logout
+    </a>
+  </div>
+</aside>
+<main>
+  <div class="page-header">
+    <h1>Welcome back, John!</h1>
+    <p>Here's your progress overview.</p>
+  </div>
+  <div class="progress-cards">
+    <div class="prog-card">
+      <div class="prog-label">Practice Test</div>
+      <div class="prog-val">83%</div>
+      <div class="prog-status done">Completed</div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-label">Cognition Test</div>
+      <div class="prog-val">—</div>
+      <div class="prog-status pending">Not Started</div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-label">Qualification</div>
+      <div class="prog-val">—</div>
+      <div class="prog-status pending">In Progress</div>
+    </div>
+  </div>
+  <div class="row-2">
+    <div class="next-step">
+      <h2>Next Step</h2>
+      <p>Take the official Cognition Test to get qualified and start earning from AI projects.</p>
+      <a href="/cognition-test" class="btn">Start Cognition Test</a>
+    </div>
+    <div class="earnings-card">
+      <h2>Potential Earnings by Tier</h2>
+      <div class="tier-row">
+        <span class="tier-name"><span class="tier-dot"></span>Basic</span>
+        <span class="tier-rate">Up to $30/hr</span>
+      </div>
+      <div class="tier-row">
+        <span class="tier-name"><span class="tier-dot"></span>STEM</span>
+        <span class="tier-rate">Up to $40/hr</span>
+      </div>
+      <div class="tier-row">
+        <span class="tier-name"><span class="tier-dot"></span>STEM Advanced</span>
+        <span class="tier-rate">Up to $50/hr</span>
+      </div>
+      <div class="tier-row">
+        <span class="tier-name"><span class="tier-dot"></span>Coding</span>
+        <span class="tier-rate">Up to $100/hr</span>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
