@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cognition Test — Jobpeak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#9a68f8;--dark:#161616;--body:#505050;--muted:#ababab;--border:#e3e3e3;--bg:#f3f3f3;--accent-light:#f0eaff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;}
+header{background:#fff;border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:-.5px;color:var(--dark);text-decoration:none;}
+.timer{font-size:.9rem;font-weight:700;color:var(--dark);display:flex;align-items:center;gap:.4rem;background:var(--bg);border:1px solid var(--border);padding:.35rem .75rem;}
+.progress-wrap{height:4px;background:var(--border);}
+.progress-fill{height:4px;background:var(--dark);width:50%;}
+main{display:flex;align-items:flex-start;justify-content:center;padding:3rem 1.5rem;}
+.card{background:#fff;border:1px solid var(--border);padding:2.5rem;width:100%;max-width:660px;}
+.q-meta{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem;font-weight:600;}
+.q-meta strong{color:var(--dark);}
+.q-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;}
+.ai-response{background:var(--bg);border:1px solid var(--border);padding:1.25rem;margin-bottom:2rem;font-size:.9rem;line-height:1.65;color:var(--body);}
+.ai-response strong{color:var(--dark);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:.5rem;}
+h3{font-size:1rem;font-weight:700;margin-bottom:1.25rem;}
+.ratings{display:flex;gap:.75rem;margin-bottom:2.5rem;}
+.rating{flex:1;border:1px solid var(--border);padding:.75rem .5rem;text-align:center;cursor:pointer;font-size:.82rem;font-weight:600;color:var(--muted);transition:all .15s;}
+.rating:hover{border-color:var(--dark);color:var(--dark);}
+.rating.selected{border-color:var(--dark);background:var(--dark);color:#fff;}
+.nav-btns{display:flex;justify-content:space-between;gap:1rem;}
+.btn-outline{background:#fff;border:1px solid var(--border);color:var(--dark);font-family:'Inter Tight',sans-serif;font-size:.88rem;font-weight:600;padding:.8rem 1.75rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;}
+.btn-primary{background:var(--dark);border:none;color:#fff;font-family:'Inter Tight',sans-serif;font-size:.88rem;font-weight:700;padding:.8rem 1.75rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;}
+.btn-primary:hover,.btn-outline:hover{opacity:.85;}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="logo">Jobpeak</a>
+  <div class="timer">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    35:20
+  </div>
+</header>
+<div class="progress-wrap"><div class="progress-fill"></div></div>
+<main>
+  <div class="card">
+    <div class="q-meta">
+      <span>Question <strong>25</strong> of 50</span>
+      <span>Cognition Test</span>
+    </div>
+    <div class="q-label">Evaluate the quality of the AI response below:</div>
+    <div class="ai-response">
+      <strong>AI Response</strong>
+      The capital of France is Paris. It is known for the Eiffel Tower, the Louvre Museum, and its rich cultural history dating back centuries. Paris serves as the political, economic, and cultural center of France.
+    </div>
+    <h3>Rate this response:</h3>
+    <div class="ratings">
+      <div class="rating" onclick="pickRating(this)">Excellent</div>
+      <div class="rating selected" onclick="pickRating(this)">Good</div>
+      <div class="rating" onclick="pickRating(this)">Average</div>
+      <div class="rating" onclick="pickRating(this)">Poor</div>
+    </div>
+    <div class="nav-btns">
+      <a href="/cognition-test" class="btn-outline">&#8592; Previous</a>
+      <a href="/qualification-result" class="btn-primary">Next &#8594;</a>
+    </div>
+  </div>
+</main>
+<script>
+function pickRating(el){document.querySelectorAll('.rating').forEach(function(r){r.classList.remove('selected');});el.classList.add('selected');}
+</script>
+</body>
+</html>
