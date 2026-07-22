@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login — Jobpeak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#9a68f8;--dark:#161616;--body:#505050;--muted:#ababab;--border:#e3e3e3;--bg:#f3f3f3;--accent-light:#f0eaff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
+nav{position:fixed;top:0;left:0;right:0;padding:1.25rem 2rem;background:#fff;border-bottom:1px solid var(--border);}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:-.5px;color:var(--dark);text-decoration:none;}
+.card{background:#fff;border:1px solid var(--border);padding:2.5rem;width:100%;max-width:420px;margin-top:5rem;}
+h1{font-size:1.5rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.3rem;}
+.sub{color:var(--muted);font-size:.85rem;margin-bottom:2rem;}
+label{display:block;font-size:.78rem;font-weight:700;color:var(--body);margin-bottom:.35rem;letter-spacing:.03em;}
+input[type="email"],input[type="password"]{width:100%;border:1px solid var(--border);padding:.8rem 1rem;font-family:'Inter Tight',sans-serif;font-size:.9rem;color:var(--dark);outline:none;background:#fff;margin-bottom:1.1rem;}
+input:focus{border-color:var(--accent);}
+.btn{display:block;background:var(--dark);color:#fff;font-family:'Inter Tight',sans-serif;font-size:.9rem;font-weight:700;padding:.95rem;border:none;cursor:pointer;width:100%;text-align:center;text-decoration:none;margin-top:.25rem;}
+.btn:hover{opacity:.85;}
+.signup-link{text-align:center;margin-top:1.25rem;font-size:.82rem;color:var(--body);}
+.signup-link a{color:var(--accent);font-weight:700;text-decoration:none;}
+</style>
+</head>
+<body>
+<nav><a href="index.html" class="logo">Jobpeak</a></nav>
+<div class="card">
+  <h1>Welcome Back</h1>
+  <p class="sub">Login to your Jobpeak account</p>
+  <label for="email">Email</label>
+  <input type="email" id="email" placeholder="john.doe@example.com">
+  <label for="password">Password</label>
+  <input type="password" id="password" placeholder="••••••••">
+  <a href="dashboard.html" class="btn">Login</a>
+  <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+</div>
+</body>
+</html>
