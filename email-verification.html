@@ -18,9 +18,11 @@ nav{position:fixed;top:0;left:0;right:0;padding:1.25rem 2rem;background:#fff;bor
 h1{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.75rem;}
 p{color:var(--body);font-size:.9rem;line-height:1.65;margin-bottom:.75rem;}
 .email-addr{font-weight:700;color:var(--dark);}
-.note{font-size:.82rem;color:var(--muted);margin-bottom:2rem;line-height:1.6;}
-.resend{display:inline-block;color:var(--accent);font-size:.9rem;font-weight:700;text-decoration:none;cursor:pointer;margin-bottom:2rem;}
+.note{font-size:.82rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.6;}
+.resend{display:inline-block;color:var(--accent);font-size:.85rem;font-weight:700;text-decoration:none;cursor:pointer;margin-bottom:1.5rem;}
 .resend:hover{text-decoration:underline;}
+.btn{display:block;background:var(--dark);color:#fff;font-family:'Inter Tight',sans-serif;font-size:.9rem;font-weight:700;padding:.95rem;border:none;cursor:pointer;width:100%;text-align:center;text-decoration:none;margin-bottom:1.5rem;}
+.btn:hover{opacity:.85;}
 .divider{height:1px;background:var(--border);margin:0 0 1.25rem;}
 .back{font-size:.82rem;color:var(--body);}
 .back a{color:var(--accent);font-weight:700;text-decoration:none;}
@@ -39,6 +41,7 @@ p{color:var(--body);font-size:.9rem;line-height:1.65;margin-bottom:.75rem;}
   <p>We've sent a verification link to<br><span class="email-addr">john.doe@example.com</span></p>
   <p class="note">Please check your inbox and click on the link to verify your account. The link expires in 24 hours.</p>
   <a class="resend" href="#">Resend Email</a>
+  <a href="/choose-qualification" class="btn">I've Verified My Email &rarr;</a>
   <div class="divider"></div>
   <p class="back">Wrong email? <a href="/signup">Go back</a></p>
 </div>
